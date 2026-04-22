@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — ASO Analytics</title>
+  <meta name="description" content="Privacy Policy for ASO Analytics. Learn how we collect, use, and protect your personal data in compliance with GDPR." />
+  <link rel="canonical" href="https://www.cristomade.it/privacy.html" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --accent-1:  #5eecc0;
+      --accent-3:  #7c6fff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    a { color: var(--accent-1); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { opacity: 0.8; }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(14,15,17,0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .logo-mark {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--muted-2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+
+    /* LAYOUT */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* HEADER */
+    .doc-header {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .doc-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      margin-bottom: 14px;
+    }
+    .doc-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 56px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      counter-reset: toc;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted-2);
+    }
+    .toc ol li::before {
+      content: counter(toc, decimal-leading-zero) '.';
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      flex-shrink: 0;
+      min-width: 26px;
+    }
+    .toc ol li a {
+      color: var(--muted-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc ol li a:hover { color: var(--accent-1); }
+
+    /* SECTIONS */
+    .doc-section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--line);
+    }
+    .doc-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .doc-section h2 {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+      scroll-margin-top: 90px;
+    }
+    .doc-section h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin: 24px 0 12px;
+      letter-spacing: -0.01em;
+    }
+    .doc-section p {
+      font-size: 15px;
+      color: var(--muted-2);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .doc-section li {
+      font-size: 15px;
+      color: var(--muted-2);
+      line-height: 1.7;
+      font-weight: 300;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .doc-section li::before {
+      content: '–';
+      color: var(--accent-1);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .doc-section a { color: var(--accent-1); }
+
+    /* Data controller card */
+    .notice-card {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 20px;
+      align-items: baseline;
+      margin-top: 16px;
+    }
+    .notice-key {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .notice-val {
+      font-size: 14px;
+      color: var(--white);
+    }
+    .notice-val a { color: var(--accent-1); }
+
+    /* Third party table */
+    .third-party-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .third-party-table th {
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 500;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .third-party-table td {
+      padding: 10px 12px;
+      color: var(--muted-2);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-weight: 300;
+    }
+    .third-party-table td:first-child { color: var(--white); font-weight: 400; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); }
+    .footer-right {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-right a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-right a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .notice-card { grid-template-columns: 1fr; gap: 4px 0; }
+      .notice-key { margin-top: 12px; }
+      .notice-key:first-child { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <div class="logo-mark" aria-hidden="true">A↑</div>
+      ASO Analytics
+    </a>
+    <a href="/" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7H2.5M6.5 11L2.5 7L6.5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="page-wrap">
+
+    <header class="doc-header">
+      <p class="doc-label">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="doc-meta">Last updated: February 4, 2026</p>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#information-we-collect">Information We Collect</a></li>
+        <li><a href="#how-we-use">How We Use Your Information</a></li>
+        <li><a href="#data-sharing">Data Sharing and Disclosure</a></li>
+        <li><a href="#data-security">Data Security</a></li>
+        <li><a href="#data-retention">Data Retention</a></li>
+        <li><a href="#your-rights">Your Rights (GDPR)</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#third-party">Third-Party Services</a></li>
+        <li><a href="#international">International Data Transfers</a></li>
+        <li><a href="#children">Children's Privacy</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. INTRODUCTION -->
+    <section class="doc-section" id="introduction" aria-labelledby="h-introduction">
+      <h2 id="h-introduction">1. Introduction</h2>
+      <p>ASO Analytics ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App Store Optimization (ASO) platform.</p>
+      <p>Data Controller: Paulo Cristo, Rua Moinho da Vila 177 1.ºG, Batalha, Portugal.<br>
+      For any questions regarding your personal data, please contact us at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a>.</p>
+      <p>By using ASO Analytics, you consent to the data practices described in this policy. If you do not agree with our policies, please do not use our Service.</p>
+    </section>
+
+    <!-- 2. INFORMATION WE COLLECT -->
+    <section class="doc-section" id="information-we-collect" aria-labelledby="h-information-we-collect">
+      <h2 id="h-information-we-collect">2. Information We Collect</h2>
+
+      <h3>2.1 Information You Provide</h3>
+      <ul>
+        <li><strong style="color:var(--white)">Account Information:</strong> Name, email address, and password when you register</li>
+        <li><strong style="color:var(--white)">Profile Information:</strong> Optional details like company name</li>
+        <li><strong style="color:var(--white)">Payment Information:</strong> Processed securely by Stripe (we do not store card numbers)</li>
+        <li><strong style="color:var(--white)">App Data:</strong> App identifiers and keywords you choose to track</li>
+        <li><strong style="color:var(--white)">Communications:</strong> Messages you send us via email or contact forms</li>
+      </ul>
+
+      <h3>2.2 Information Collected Automatically</h3>
+      <ul>
+        <li><strong style="color:var(--white)">Usage Data:</strong> Features used, pages visited, actions taken</li>
+        <li><strong style="color:var(--white)">Device Information:</strong> Browser type, operating system, device type</li>
+        <li><strong style="color:var(--white)">Log Data:</strong> IP address, access times, referring URLs</li>
+        <li><strong style="color:var(--white)">Cookies:</strong> Essential cookies for authentication and preferences</li>
+      </ul>
+    </section>
+
+    <!-- 3. HOW WE USE -->
+    <section class="doc-section" id="how-we-use" aria-labelledby="h-how-we-use">
+      <h2 id="h-how-we-use">3. How We Use Your Information and Legal Basis</h2>
+      <p>Under the GDPR, we process your personal data based on the following legal grounds:</p>
+
+      <h3>3.1 Contract Performance</h3>
+      <ul>
+        <li>To provide and maintain our Service</li>
+        <li>To process your subscription and payments</li>
+        <li>To send you important updates about your account</li>
+        <li>To respond to your inquiries and support requests</li>
+      </ul>
+
+      <h3>3.2 Legal Obligations</h3>
+      <ul>
+        <li>To maintain payment and invoicing records as required by tax laws</li>
+        <li>To comply with applicable regulations and legal requests</li>
+      </ul>
+
+      <h3>3.3 Legitimate Interests</h3>
+      <ul>
+        <li>To improve and personalize your experience</li>
+        <li>To analyze usage patterns and optimize our platform</li>
+        <li>To detect and prevent fraud or abuse</li>
+        <li>To ensure the security of our Service</li>
+      </ul>
+      <p>You have the right to object to processing based on legitimate interests. Contact us at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a> to exercise this right.</p>
+    </section>
+
+    <!-- 4. DATA SHARING -->
+    <section class="doc-section" id="data-sharing" aria-labelledby="h-data-sharing">
+      <h2 id="h-data-sharing">4. Data Sharing and Disclosure</h2>
+      <p>We do not sell your personal data. We may share information with:</p>
+      <ul>
+        <li><strong style="color:var(--white)">Service Providers:</strong> Trusted third parties who assist in operating our Service (e.g., Stripe for payments, hosting providers for data storage)</li>
+        <li><strong style="color:var(--white)">Legal Requirements:</strong> When required by law or to protect our rights</li>
+        <li><strong style="color:var(--white)">Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+      </ul>
+    </section>
+
+    <!-- 5. DATA SECURITY -->
+    <section class="doc-section" id="data-security" aria-labelledby="h-data-security">
+      <h2 id="h-data-security">5. Data Security</h2>
+      <p>We implement appropriate security measures to protect your data:</p>
+      <ul>
+        <li>Encryption of data in transit (HTTPS/TLS)</li>
+        <li>Encryption of sensitive data at rest</li>
+        <li>Regular security assessments</li>
+        <li>Access controls and authentication</li>
+        <li>Secure cloud infrastructure (hosted in EU data centers)</li>
+      </ul>
+      <p>While we strive to protect your data, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.</p>
+    </section>
+
+    <!-- 6. DATA RETENTION -->
+    <section class="doc-section" id="data-retention" aria-labelledby="h-data-retention">
+      <h2 id="h-data-retention">6. Data Retention</h2>
+      <p>We retain your data for as long as your account is active or as needed to provide services:</p>
+      <ul>
+        <li><strong style="color:var(--white)">Account Data:</strong> Retained until account deletion</li>
+        <li><strong style="color:var(--white)">Usage Data:</strong> Retained for up to 24 months for analytics</li>
+        <li><strong style="color:var(--white)">Payment Records:</strong> Retained as required by tax and accounting laws</li>
+        <li><strong style="color:var(--white)">Deleted Accounts:</strong> Data is removed within 30 days of account deletion</li>
+      </ul>
+    </section>
+
+    <!-- 7. YOUR RIGHTS -->
+    <section class="doc-section" id="your-rights" aria-labelledby="h-your-rights">
+      <h2 id="h-your-rights">7. Your Rights (GDPR)</h2>
+      <p>If you are in the European Economic Area (EEA), you have the following rights:</p>
+      <ul>
+        <li><strong style="color:var(--white)">Access:</strong> Request a copy of your personal data</li>
+        <li><strong style="color:var(--white)">Rectification:</strong> Request correction of inaccurate data</li>
+        <li><strong style="color:var(--white)">Erasure:</strong> Request deletion of your data ("right to be forgotten")</li>
+        <li><strong style="color:var(--white)">Portability:</strong> Request your data in a portable format</li>
+        <li><strong style="color:var(--white)">Restriction:</strong> Request limitation of data processing</li>
+        <li><strong style="color:var(--white)">Objection:</strong> Object to certain data processing activities</li>
+        <li><strong style="color:var(--white)">Complaint:</strong> Lodge a complaint with a supervisory authority</li>
+      </ul>
+      <p>To exercise these rights, contact us at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a>. We will respond within 30 days.</p>
+      <p><strong style="color:var(--white)">Right to lodge a complaint:</strong> If you believe your data protection rights have been violated, you have the right to lodge a complaint with your local supervisory authority. In Portugal, this is the <a href="https://www.cnpd.pt/" target="_blank" rel="noopener noreferrer">CNPD (Comissão Nacional de Proteção de Dados)</a>. You can also contact the data protection authority in your country of residence.</p>
+    </section>
+
+    <!-- 8. COOKIES -->
+    <section class="doc-section" id="cookies" aria-labelledby="h-cookies">
+      <h2 id="h-cookies">8. Cookies</h2>
+      <p>We use essential cookies to operate our Service:</p>
+      <ul>
+        <li><strong style="color:var(--white)">Authentication Cookies:</strong> To keep you logged in</li>
+        <li><strong style="color:var(--white)">Preference Cookies:</strong> To remember your settings</li>
+        <li><strong style="color:var(--white)">Security Cookies:</strong> To protect against fraud</li>
+      </ul>
+      <p>We do not use advertising or tracking cookies. You can disable cookies in your browser settings, but this may affect Service functionality.</p>
+    </section>
+
+    <!-- 9. THIRD-PARTY SERVICES -->
+    <section class="doc-section" id="third-party" aria-labelledby="h-third-party">
+      <h2 id="h-third-party">9. Third-Party Services</h2>
+      <p>We use the following third-party services:</p>
+
+      <table class="third-party-table" aria-label="Third-party services used">
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Privacy Policy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Stripe</td>
+            <td>Payment processing</td>
+            <td><a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">stripe.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Hetzner</td>
+            <td>Hosting &amp; infrastructure</td>
+            <td><a href="https://www.hetzner.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">hetzner.com/legal/privacy-policy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 10. INTERNATIONAL TRANSFERS -->
+    <section class="doc-section" id="international" aria-labelledby="h-international">
+      <h2 id="h-international">10. International Data Transfers</h2>
+      <p>Our primary infrastructure is hosted in the European Union. However, some of our third-party service providers may be based in the United States. When your data is transferred outside the EEA, we ensure appropriate safeguards are in place:</p>
+      <ul>
+        <li><strong style="color:var(--white)">Standard Contractual Clauses (SCCs):</strong> Our service providers have committed to the EU Standard Contractual Clauses approved by the European Commission</li>
+        <li><strong style="color:var(--white)">Additional Safeguards:</strong> Our providers implement technical measures such as encryption and access controls to protect your data</li>
+      </ul>
+      <p>You can request a copy of the applicable safeguards by contacting us at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a>.</p>
+    </section>
+
+    <!-- 11. CHILDREN -->
+    <section class="doc-section" id="children" aria-labelledby="h-children">
+      <h2 id="h-children">11. Children's Privacy</h2>
+      <p>Our Service is not intended for users under 16 years of age. We do not knowingly collect personal information from children. If you believe we have collected data from a child, please contact us immediately at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a>.</p>
+    </section>
+
+    <!-- 12. CHANGES -->
+    <section class="doc-section" id="changes" aria-labelledby="h-changes">
+      <h2 id="h-changes">12. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by email or through the Service. We encourage you to review this policy periodically.</p>
+    </section>
+
+    <!-- 13. CONTACT -->
+    <section class="doc-section" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">13. Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+      <div class="notice-card" role="table" aria-label="Data controller contact details">
+        <span class="notice-key">Owner</span>
+        <span class="notice-val">Paulo Cristo</span>
+
+        <span class="notice-key">Address</span>
+        <span class="notice-val">Rua Moinho da Vila 177 1.ºG, Batalha, Portugal</span>
+
+        <span class="notice-key">Email</span>
+        <span class="notice-val"><a href="mailto:paulocristo@me.com">paulocristo@me.com</a></span>
+
+        <span class="notice-key">VAT Number</span>
+        <span class="notice-val">PT228933080</span>
+
+        <span class="notice-key">Website</span>
+        <span class="notice-val"><a href="https://www.cristomade.it/">cristomade.it</a></span>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+    </div>
+    <nav class="footer-right" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="https://aso.cristomade.it/">App</a>
+      <a href="mailto:paulocristo@me.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
