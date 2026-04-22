@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — ASO Analytics</title>
+  <meta name="description" content="Terms of Service for ASO Analytics, the App Store Optimization intelligence platform by CristoMade." />
+  <link rel="canonical" href="https://www.cristomade.it/terms.html" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --accent-1:  #5eecc0;
+      --accent-3:  #7c6fff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    a { color: var(--accent-1); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { opacity: 0.8; }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(14,15,17,0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--white);
+    }
+    .logo-mark {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: var(--muted-2);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--white); }
+
+    /* LAYOUT */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* HEADER */
+    .doc-header {
+      margin-bottom: 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .doc-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      margin-bottom: 14px;
+    }
+    .doc-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 13px;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 56px;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      counter-reset: toc;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted-2);
+    }
+    .toc ol li::before {
+      content: counter(toc, decimal-leading-zero) '.';
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      flex-shrink: 0;
+      min-width: 26px;
+    }
+    .toc ol li a {
+      color: var(--muted-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc ol li a:hover { color: var(--accent-1); }
+
+    /* SECTIONS */
+    .doc-section {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--line);
+    }
+    .doc-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .doc-section h2 {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+      scroll-margin-top: 90px;
+    }
+    .doc-section p {
+      font-size: 15px;
+      color: var(--muted-2);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section ul, .doc-section ol {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .doc-section li {
+      font-size: 15px;
+      color: var(--muted-2);
+      line-height: 1.7;
+      font-weight: 300;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .doc-section li::before {
+      content: '–';
+      color: var(--accent-1);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .doc-section a { color: var(--accent-1); }
+
+    /* Legal notice card */
+    .notice-card {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 20px;
+      align-items: baseline;
+    }
+    .notice-key {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .notice-val {
+      font-size: 14px;
+      color: var(--white);
+    }
+    .notice-val a { color: var(--accent-1); }
+
+    /* Fair use table */
+    .fair-use-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .fair-use-table th {
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 500;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .fair-use-table td {
+      padding: 10px 12px;
+      color: var(--muted-2);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-weight: 300;
+    }
+    .fair-use-table td:first-child { color: var(--white); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); }
+    .footer-right {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-right a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-right a:hover { color: var(--white); }
+
+    @media (max-width: 600px) {
+      .notice-card { grid-template-columns: 1fr; gap: 4px 0; }
+      .notice-key { margin-top: 12px; }
+      .notice-key:first-child { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <div class="logo-mark" aria-hidden="true">A↑</div>
+      ASO Analytics
+    </a>
+    <a href="/" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7H2.5M6.5 11L2.5 7L6.5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to home
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="page-wrap">
+
+    <header class="doc-header">
+      <p class="doc-label">Legal</p>
+      <h1>Terms of Service</h1>
+      <p class="doc-meta">Last updated: April 22, 2026</p>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#legal-notice">Legal Notice</a></li>
+        <li><a href="#acceptance">Acceptance of Terms</a></li>
+        <li><a href="#description">Description of Service</a></li>
+        <li><a href="#registration">Account Registration</a></li>
+        <li><a href="#payments">Subscription and Payments</a></li>
+        <li><a href="#acceptable-use">Acceptable Use</a></li>
+        <li><a href="#fair-use">Fair Use Policy</a></li>
+        <li><a href="#ip">Intellectual Property</a></li>
+        <li><a href="#liability">Limitation of Liability</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#governing-law">Governing Law</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1. LEGAL NOTICE -->
+    <section class="doc-section" id="legal-notice" aria-labelledby="h-legal-notice">
+      <h2 id="h-legal-notice">1. Legal Notice</h2>
+      <p>This website is operated by:</p>
+      <div class="notice-card" role="table" aria-label="Legal operator details">
+        <span class="notice-key">Owner</span>
+        <span class="notice-val">Paulo Cristo</span>
+
+        <span class="notice-key">Address</span>
+        <span class="notice-val">Rua Moinho da Vila 177 1.ºG, Batalha, Portugal</span>
+
+        <span class="notice-key">Email</span>
+        <span class="notice-val"><a href="mailto:paulocristo@me.com">paulocristo@me.com</a></span>
+
+        <span class="notice-key">VAT Number</span>
+        <span class="notice-val">PT228933080</span>
+      </div>
+    </section>
+
+    <!-- 2. ACCEPTANCE -->
+    <section class="doc-section" id="acceptance" aria-labelledby="h-acceptance">
+      <h2 id="h-acceptance">2. Acceptance of Terms</h2>
+      <p>By accessing or using ASO Analytics ("Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our Service.</p>
+      <p>We reserve the right to modify these terms at any time. We will notify users of any material changes via email or through the Service. Your continued use after such modifications constitutes acceptance of the updated terms.</p>
+    </section>
+
+    <!-- 3. DESCRIPTION -->
+    <section class="doc-section" id="description" aria-labelledby="h-description">
+      <h2 id="h-description">3. Description of Service</h2>
+      <p>ASO Analytics provides App Store Optimization (ASO) tools and analytics for mobile app developers. Our services include:</p>
+      <ul>
+        <li>Keyword tracking and ranking monitoring</li>
+        <li>Keyword discovery and opportunity analysis</li>
+        <li>Competitor tracking, analysis and comparison</li>
+        <li>Competitor Reviews analysis and optimization strategies</li>
+        <li>Performance analytics and traffic source breakdown</li>
+        <li>Detailed metrics and analytics breakdown. Improvement strategies</li>
+        <li>ASO health diagnosis and actionable recommendations</li>
+      </ul>
+      <p>The Service is provided on an "as is" and "as available" basis. We do not guarantee specific results or outcomes from using our tools.</p>
+    </section>
+
+    <!-- 4. ACCOUNT REGISTRATION -->
+    <section class="doc-section" id="registration" aria-labelledby="h-registration">
+      <h2 id="h-registration">4. Account Registration</h2>
+      <p>To use certain features of the Service, you must create an account. You agree to:</p>
+      <ul>
+        <li>Provide accurate and complete registration information</li>
+        <li>Maintain the security of your account credentials</li>
+        <li>Notify us immediately of any unauthorized access</li>
+        <li>Accept responsibility for all activities under your account</li>
+      </ul>
+    </section>
+
+    <!-- 5. PAYMENTS -->
+    <section class="doc-section" id="payments" aria-labelledby="h-payments">
+      <h2 id="h-payments">5. Subscription and Payments</h2>
+      <p>ASO Analytics offers both free and paid subscription plans. For paid subscriptions:</p>
+      <ul>
+        <li>Payments are processed securely through Stripe</li>
+        <li>Subscriptions are billed monthly in advance</li>
+        <li>You may cancel your subscription at any time</li>
+        <li>Cancellations take effect at the end of the current billing period</li>
+        <li>No refunds are provided for partial months</li>
+      </ul>
+      <p>We reserve the right to modify pricing with 30 days advance notice. Price changes will not affect your current billing cycle.</p>
+    </section>
+
+    <!-- 6. ACCEPTABLE USE -->
+    <section class="doc-section" id="acceptable-use" aria-labelledby="h-acceptable-use">
+      <h2 id="h-acceptable-use">6. Acceptable Use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Use the Service for any illegal purpose</li>
+        <li>Attempt to gain unauthorized access to our systems</li>
+        <li>Interfere with or disrupt the Service</li>
+        <li>Reverse engineer or attempt to extract source code</li>
+        <li>Use automated scripts to collect data without permission</li>
+        <li>Share your account credentials with third parties</li>
+        <li>Resell or redistribute the Service without authorization</li>
+      </ul>
+    </section>
+
+    <!-- 7. FAIR USE -->
+    <section class="doc-section" id="fair-use" aria-labelledby="h-fair-use">
+      <h2 id="h-fair-use">7. Fair Use Policy</h2>
+      <p>Each plan includes defined usage limits to ensure service quality for all users. The following thresholds apply per account on the Elite plan:</p>
+
+      <table class="fair-use-table" aria-label="Fair use thresholds">
+        <thead>
+          <tr>
+            <th scope="col">Resource</th>
+            <th scope="col">Elite plan limit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Apps</td><td>Up to 20 apps per account</td></tr>
+          <tr><td>Keyword tracking</td><td>Up to 500 keywords per app</td></tr>
+          <tr><td>Competitors</td><td>Unlimited tracked competitors</td></tr>
+          <tr><td>Data refreshes</td><td>Up to 5 refreshes per app per day</td></tr>
+        </tbody>
+      </table>
+
+      <p>These thresholds accommodate the vast majority of users. If your business needs exceed these limits, please contact us at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a> to discuss your requirements. We will review your use case and may grant additional capacity upon approval.</p>
+      <p>Exceeding these thresholds without prior approval may result in temporary service limitations until your usage is reviewed.</p>
+    </section>
+
+    <!-- 8. IP -->
+    <section class="doc-section" id="ip" aria-labelledby="h-ip">
+      <h2 id="h-ip">8. Intellectual Property</h2>
+      <p>All content, features, and functionality of the Service are owned by ASO Analytics and are protected by intellectual property laws. You retain ownership of any data you input into the Service.</p>
+      <p>You grant us a limited license to use your data solely for providing and improving the Service. We will not sell your data to third parties.</p>
+    </section>
+
+    <!-- 9. LIABILITY -->
+    <section class="doc-section" id="liability" aria-labelledby="h-liability">
+      <h2 id="h-liability">9. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, ASO Analytics shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities.</p>
+      <p>Our total liability for any claim arising from or related to the Service shall not exceed the amount you paid us in the 12 months preceding the claim.</p>
+    </section>
+
+    <!-- 10. TERMINATION -->
+    <section class="doc-section" id="termination" aria-labelledby="h-termination">
+      <h2 id="h-termination">10. Termination</h2>
+      <p>We may suspend or terminate your access to the Service at any time for violation of these terms or for any other reason at our sole discretion. Upon termination:</p>
+      <ul>
+        <li>Your right to use the Service ceases immediately</li>
+        <li>You may request export of your data within 30 days</li>
+        <li>We may delete your data after 30 days</li>
+      </ul>
+    </section>
+
+    <!-- 11. GOVERNING LAW -->
+    <section class="doc-section" id="governing-law" aria-labelledby="h-governing-law">
+      <h2 id="h-governing-law">11. Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of Portugal, without regard to its conflict of law provisions. Any disputes shall be resolved in the courts of Leiria, Portugal.</p>
+    </section>
+
+    <!-- 12. CONTACT -->
+    <section class="doc-section" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">12. Contact</h2>
+      <p>If you have any questions about these Terms, please contact us at <a href="mailto:paulocristo@me.com">paulocristo@me.com</a>.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+    </div>
+    <nav class="footer-right" aria-label="Footer navigation">
+      <a href="/">Home</a>
+      <a href="https://aso.cristomade.it/">App</a>
+      <a href="mailto:paulocristo@me.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

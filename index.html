@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Primary Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASO Analytics — App Store Optimization Intelligence for iOS Developers</title>
+  <meta name="description" content="Track keyword rankings, monitor competitors, analyze performance intelligence, and grow your iOS app's visibility on the App Store. ASO Analytics gives indie developers enterprise-grade ASO tools." />
+  <meta name="keywords" content="ASO analytics, app store optimization, keyword ranking tracker, iOS app analytics, App Store Connect, competitor analysis, keyword intelligence, app store keywords, indie developer tools" />
+  <meta name="author" content="CristoMade" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.cristomade.it/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.cristomade.it/" />
+  <meta property="og:title" content="ASO Analytics — App Store Optimization Intelligence" />
+  <meta property="og:description" content="Track keyword rankings, monitor competitors, and grow your iOS app's visibility. Built for indie developers who take discoverability seriously." />
+  <meta property="og:image" content="https://www.cristomade.it/og-image.png" />
+  <meta property="og:site_name" content="ASO Analytics by CristoMade" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.cristomade.it/" />
+  <meta name="twitter:title" content="ASO Analytics — App Store Optimization Intelligence" />
+  <meta name="twitter:description" content="Track keyword rankings, monitor competitors, and grow your iOS app's visibility. Enterprise-grade ASO tools for indie developers." />
+  <meta name="twitter:image" content="https://www.cristomade.it/og-image.png" />
+
+  <!-- App link -->
+  <meta name="application-url" content="https://aso.cristomade.it/" />
+  <link rel="alternate" type="text/html" href="https://aso.cristomade.it/" title="Launch ASO Analytics" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ASO Analytics",
+    "description": "App Store Optimization intelligence platform for iOS developers. Track keyword rankings, monitor competitors, and grow your app's visibility.",
+    "url": "https://aso.cristomade.it/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "9.99",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "24.99",
+        "priceCurrency": "USD"
+      }
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "CristoMade",
+      "url": "https://www.cristomade.it/"
+    }
+  }
+  </script>
+
+  <style>
+    /* ===================================================
+       CSS CUSTOM PROPERTIES
+    =================================================== */
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --off-white: #f5f4f0;
+      --cream:     #faf8f4;
+      --accent-1:  #5eecc0;   /* mint green */
+      --accent-2:  #ffd166;   /* amber */
+      --accent-3:  #7c6fff;   /* indigo */
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+      --radius:    10px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.18);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.28);
+      --shadow-lg: 0 24px 64px rgba(0,0,0,0.36);
+    }
+
+    /* ===================================================
+       RESET & BASE
+    =================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===================================================
+       TYPOGRAPHY
+    =================================================== */
+    .serif { font-family: var(--serif); }
+    .mono  { font-family: var(--mono); }
+
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; }
+
+    /* ===================================================
+       LAYOUT HELPERS
+    =================================================== */
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .wrap-narrow {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section { padding: 112px 0; }
+    .section-sm { padding: 72px 0; }
+
+    /* ===================================================
+       GRAIN OVERLAY (adds texture across whole page)
+    =================================================== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ===================================================
+       NAVIGATION
+    =================================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(14,15,17, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--serif);
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+    .logo-mark {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted-2);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--ink) !important;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      width: 22px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ===================================================
+       HERO
+    =================================================== */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Background radial glow */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 700px;
+      background: radial-gradient(ellipse at center,
+        rgba(94, 236, 192, 0.12) 0%,
+        rgba(124, 111, 255, 0.08) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      border: 1px solid rgba(94, 236, 192, 0.25);
+      background: rgba(94, 236, 192, 0.07);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent-1);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 24px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-1);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--muted-2);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-1);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 32px rgba(94, 236, 192, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 48px rgba(94, 236, 192, 0.45);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.05);
+    }
+    .hero-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    /* Floating stat cards in hero */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 72px;
+    }
+    .hero-stat {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      text-align: left;
+      min-width: 150px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .hero-stat:hover {
+      border-color: rgba(94, 236, 192, 0.3);
+      transform: translateY(-3px);
+    }
+    .hero-stat-value {
+      font-family: var(--serif);
+      font-size: 32px;
+      color: var(--white);
+    }
+    .hero-stat-value span { color: var(--accent-1); }
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ===================================================
+       DIVIDER
+    =================================================== */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* ===================================================
+       LOGOS / SOCIAL PROOF BAR
+    =================================================== */
+    .proof-bar {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .proof-bar p {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .proof-items {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .proof-item-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-1);
+      opacity: 0.6;
+    }
+
+    /* ===================================================
+       FEATURES SECTION
+    =================================================== */
+    .features-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      margin-bottom: 16px;
+    }
+    .features-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .features-header p {
+      font-size: 17px;
+      color: var(--muted-2);
+      max-width: 540px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Feature grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .feature-card {
+      background: var(--ink-2);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    .feature-card:hover { background: var(--ink-3); }
+    .feature-card:first-child { border-radius: 12px 0 0 0; }
+    .feature-card:nth-child(3) { border-radius: 0 12px 0 0; }
+    .feature-card:nth-child(4) { border-radius: 0 0 0 12px; }
+    .feature-card:last-child { border-radius: 0 0 12px 0; }
+    /* Accent line on top of featured card */
+    .feature-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+    }
+    .feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(94, 236, 192, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    .feature-icon.purple { background: rgba(124, 111, 255, 0.12); }
+    .feature-icon.amber  { background: rgba(255, 209, 102, 0.12); }
+    .feature-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted-2);
+      line-height: 1.65;
+    }
+    .feature-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 3px 8px;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    /* ===================================================
+       BIG FEATURE SPOTLIGHT
+    =================================================== */
+    .spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .spotlight.reverse { direction: rtl; }
+    .spotlight.reverse > * { direction: ltr; }
+    .spotlight-text .section-label { margin-bottom: 14px; }
+    .spotlight-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+    .spotlight-text p {
+      font-size: 16px;
+      color: var(--muted-2);
+      line-height: 1.75;
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+    .spotlight-list {
+      list-style: none;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .spotlight-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted-2);
+    }
+    .spotlight-list li::before {
+      content: '✦';
+      color: var(--accent-1);
+      font-size: 10px;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    /* Mock UI panel */
+    .mock-panel {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .mock-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mock-dot.red    { background: #ff5f56; }
+    .mock-dot.yellow { background: #ffbd2e; }
+    .mock-dot.green  { background: #27c93f; }
+    .mock-title {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: auto;
+    }
+    /* Keyword rank rows */
+    .kw-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      animation: slideIn 0.4s both;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .kw-row:nth-child(1) { animation-delay: 0.1s; }
+    .kw-row:nth-child(2) { animation-delay: 0.2s; }
+    .kw-row:nth-child(3) { animation-delay: 0.3s; }
+    .kw-row:nth-child(4) { animation-delay: 0.4s; }
+    .kw-row:nth-child(5) { animation-delay: 0.5s; }
+    .kw-name { font-size: 13px; color: var(--white); flex: 1; }
+    .kw-rank {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      min-width: 36px;
+      text-align: right;
+    }
+    .kw-rank.top {   color: var(--accent-1); }
+    .kw-rank.mid {   color: var(--accent-2); }
+    .kw-rank.low {   color: var(--muted); }
+    .kw-trend {
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .kw-trend.up   { color: var(--accent-1); }
+    .kw-trend.down { color: #f87171; }
+    .kw-trend.flat { color: var(--muted); }
+    /* Competitor mock */
+    .comp-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .comp-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .comp-name { font-size: 13px; color: var(--white); flex: 1; }
+    .comp-score {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted-2);
+    }
+    .score-bar-wrap {
+      width: 60px;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .score-bar {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent-3), var(--accent-1));
+    }
+    /* Intelligence insight */
+    .insight-card {
+      background: rgba(94, 236, 192, 0.06);
+      border: 1px solid rgba(94, 236, 192, 0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--muted-2);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .insight-card strong { color: var(--accent-1); }
+
+    /* ===================================================
+       PRICING
+    =================================================== */
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .pricing-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .pricing-header p {
+      font-size: 16px;
+      color: var(--muted-2);
+      font-weight: 300;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .pricing-card {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .pricing-card.popular {
+      border-color: var(--accent-3);
+      background: linear-gradient(160deg, rgba(124,111,255,0.08) 0%, var(--ink-2) 100%);
+    }
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-3);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .plan-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin-bottom: 16px;
+    }
+    .plan-price {
+      font-family: var(--serif);
+      font-size: 42px;
+      color: var(--white);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .plan-price sup {
+      font-family: var(--sans);
+      font-size: 17px;
+      vertical-align: super;
+      font-weight: 600;
+    }
+    .plan-price-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .plan-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 20px 0;
+    }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .plan-features li {
+      font-size: 13px;
+      color: var(--muted-2);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .plan-features li::before {
+      content: '✓';
+      color: var(--accent-1);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .plan-features li.dim { color: var(--muted); }
+    .plan-features li.dim::before { color: var(--muted); }
+    .btn-plan {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: 1px solid var(--line);
+      color: var(--white);
+    }
+    .btn-plan:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .btn-plan.accent {
+      background: var(--accent-3);
+      border-color: var(--accent-3);
+      color: #fff;
+    }
+    .btn-plan.accent:hover {
+      background: #6a5eef;
+      border-color: #6a5eef;
+      transform: none;
+    }
+
+    /* ===================================================
+       TESTIMONIALS / QUOTES
+    =================================================== */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .quote-card {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .quote-stars {
+      color: var(--accent-2);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .quote-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted-2);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .quote-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .quote-name { font-size: 13px; font-weight: 600; color: var(--white); }
+    .quote-role { font-size: 12px; color: var(--muted); }
+
+    /* ===================================================
+       FAQ
+    =================================================== */
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .faq-q h3 {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: transform 0.25s, color 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent-1); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+    .faq-a p {
+      font-size: 15px;
+      color: var(--muted-2);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ===================================================
+       CTA SECTION
+    =================================================== */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(124,111,255,0.15), transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 400;
+      margin-bottom: 18px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-section p {
+      font-size: 17px;
+      color: var(--muted-2);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-section .hero-actions { position: relative; z-index: 1; }
+
+    /* ===================================================
+       FOOTER
+    =================================================== */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 48px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-right {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-right a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-right a:hover { color: var(--white); }
+
+    /* ===================================================
+       SCROLL ANIMATIONS
+    =================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* ===================================================
+       RESPONSIVE
+    =================================================== */
+    @media (max-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .feature-card:first-child  { border-radius: 12px 0 0 0; }
+      .feature-card:nth-child(2) { border-radius: 0 12px 0 0; }
+      .feature-card:nth-child(3) { border-radius: 0 0 0 0; }
+      .feature-card:nth-child(5) { border-radius: 0 0 0 12px; }
+      .feature-card:last-child   { border-radius: 0 0 12px 0; }
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .spotlight { grid-template-columns: 1fr; gap: 40px; }
+      .spotlight.reverse { direction: ltr; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-card { border-radius: 0 !important; }
+      .feature-card:first-child { border-radius: 12px 12px 0 0 !important; }
+      .feature-card:last-child  { border-radius: 0 0 12px 12px !important; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+      .quotes-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 10px; }
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14,15,17,0.97);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 24px;
+      font-family: var(--serif);
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--accent-1); }
+    .mobile-nav-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted-2);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================
+     MOBILE NAV OVERLAY
+=================================================== -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">✕</span>
+  <a href="#features" onclick="toggleMobileNav()">Features</a>
+  <a href="#pricing" onclick="toggleMobileNav()">Pricing</a>
+  <a href="#faq" onclick="toggleMobileNav()">FAQ</a>
+  <a href="https://aso.cristomade.it/" class="btn-primary" style="font-size:16px; margin-top:8px;">Start Free</a>
+</nav>
+
+<!-- ===================================================
+     NAVIGATION
+=================================================== -->
+<header class="nav" id="mainNav" role="banner">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <div class="logo-mark" aria-hidden="true">A↑</div>
+      <span>ASO Analytics</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://aso.cristomade.it/auth/login">Sign in</a></li>
+      <li><a href="https://aso.cristomade.it/auth/register" class="nav-cta">Get started free</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===================================================
+     HERO
+=================================================== -->
+<main>
+<section class="hero" aria-label="Hero">
+  <div class="wrap">
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">App Store Optimization</div>
+
+      <h1>
+        Rank higher.<br>
+        Grow <em>organically.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Track every keyword, decode competitor strategies, and turn App Store data into a clear growth plan — without the enterprise price tag.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://aso.cristomade.it/auth/register" class="btn-primary">
+          Start for free
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#features" class="btn-secondary">See what's inside</a>
+      </div>
+
+      <p class="hero-note">Free plan available — no credit card required.</p>
+
+      <div class="hero-stats" role="list" aria-label="Key statistics">
+        <div class="hero-stat reveal reveal-d1" role="listitem">
+          <div class="hero-stat-value">500<span>+</span></div>
+          <div class="hero-stat-label">Keywords tracked<br>on Elite plan</div>
+        </div>
+        <div class="hero-stat reveal reveal-d2" role="listitem">
+          <div class="hero-stat-value">24<span>h</span></div>
+          <div class="hero-stat-label">Daily ranking<br>refresh cadence</div>
+        </div>
+        <div class="hero-stat reveal reveal-d3" role="listitem">
+          <div class="hero-stat-value">4</div>
+          <div class="hero-stat-label">Flexible plans<br>for every stage</div>
+        </div>
+        <div class="hero-stat reveal reveal-d4" role="listitem">
+          <div class="hero-stat-value">0</div>
+          <div class="hero-stat-label">Setup effort —<br>connect & go</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     PROOF BAR
+=================================================== -->
+<div class="divider"></div>
+<div class="proof-bar reveal">
+  <div class="wrap">
+    <p>The tools indie makers actually use</p>
+    <div class="proof-items" role="list">
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Keyword Rank Tracking</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Competitor Intelligence</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Performance Analytics</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Traffic Source Breakdown</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Review Monitoring</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> ASO Health Diagnosis</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ===================================================
+     FEATURES GRID
+=================================================== -->
+<section class="section" id="features" aria-labelledby="features-heading">
+  <div class="wrap">
+    <header class="features-header reveal">
+      <p class="section-label">Everything you need</p>
+      <h2 id="features-heading">ASO intelligence,<br>without the bloat</h2>
+      <p>Six integrated modules that work together to surface exactly what's moving the needle for your app's discoverability.</p>
+    </header>
+
+    <div class="features-grid" role="list">
+
+      <article class="feature-card featured reveal" role="listitem">
+        <div class="feature-icon" aria-hidden="true">📈</div>
+        <h3>Keyword Rank Tracking</h3>
+        <p>Monitor your App Store position for every keyword you care about — tracked daily with trend history so you can see the arc, not just the snapshot.</p>
+        <span class="feature-tag">Core Feature</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d1" role="listitem">
+        <div class="feature-icon purple" aria-hidden="true">🔍</div>
+        <h3>Keyword Intelligence</h3>
+        <p>Volume tiers, difficulty scores, opportunity ratings, and trend signals — all computed automatically so you know which keywords are worth fighting for.</p>
+        <span class="feature-tag">Automated</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d2" role="listitem">
+        <div class="feature-icon amber" aria-hidden="true">⚔️</div>
+        <h3>Competitor Analysis</h3>
+        <p>Discover who ranks ahead of you, analyse their keyword overlap, and expose their review weaknesses — all surfaced automatically from publicly available data.</p>
+        <span class="feature-tag">Competitive Intel</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d1" role="listitem">
+        <div class="feature-icon amber" aria-hidden="true">📊</div>
+        <h3>Performance Analytics</h3>
+        <p>Downloads, impressions, page views, and conversion rates pulled directly from your App Store Connect account — plotted over 30 days with smart anomaly callouts.</p>
+        <span class="feature-tag">ASC Integration</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d2" role="listitem">
+        <div class="feature-icon" aria-hidden="true">🩺</div>
+        <h3>ASO Diagnosis</h3>
+        <p>A full health check on your app's metadata: title, subtitle, description, screenshots, and keyword field — with a prioritised action list to address every gap.</p>
+        <span class="feature-tag">Actionable</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d3" role="listitem">
+        <div class="feature-icon purple" aria-hidden="true">🚦</div>
+        <h3>Traffic Source Breakdown</h3>
+        <p>Understand whether users find you through search, browse, or referral — so you can double down on the channels that actually convert to installs.</p>
+        <span class="feature-tag">Attribution</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     SPOTLIGHT 1 — Keyword Intelligence
+=================================================== -->
+<section class="section" aria-label="Keyword intelligence spotlight">
+  <div class="wrap">
+    <div class="spotlight reveal">
+      <div class="spotlight-text">
+        <p class="section-label">Keyword Intelligence</p>
+        <h2>Know which battles<br>are worth fighting</h2>
+        <p>Not all keywords are equal. ASO Analytics scores each tracked keyword across volume, difficulty, and opportunity — so you spend time optimising where it actually moves the needle.</p>
+        <ul class="spotlight-list">
+          <li>Volume tiers derived from real search signals</li>
+          <li>Difficulty scoring based on competition depth at this ranking position</li>
+          <li>Opportunity label: Poor, Fair, Good, or Excellent</li>
+          <li>Historical trends so you can catch momentum shifts early</li>
+        </ul>
+      </div>
+      <div class="mock-panel" aria-label="Keyword rankings preview" role="img">
+        <div class="mock-header">
+          <div class="mock-dot red"></div>
+          <div class="mock-dot yellow"></div>
+          <div class="mock-dot green"></div>
+          <span class="mock-title">keyword_rankings.json</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">meditation app</span>
+          <span class="kw-rank top">#4</span>
+          <span class="kw-trend up">▲ 6</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">sleep sounds</span>
+          <span class="kw-rank top">#7</span>
+          <span class="kw-trend up">▲ 2</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">anxiety relief</span>
+          <span class="kw-rank mid">#18</span>
+          <span class="kw-trend flat">— 0</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">mindfulness timer</span>
+          <span class="kw-rank mid">#31</span>
+          <span class="kw-trend down">▼ 4</span>
+        </div>
+        <div class="kw-row">
+          <span class="kw-name">breathing exercises</span>
+          <span class="kw-rank low">#74</span>
+          <span class="kw-trend up">▲ 11</span>
+        </div>
+        <div class="insight-card">
+          <strong>💡 Quick win:</strong> "breathing exercises" is gaining momentum (+11 positions). Strengthen your keyword field and subtitle to capitalise on this trend.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     SPOTLIGHT 2 — Competitor Analysis
+=================================================== -->
+<section class="section" style="padding-top:0;" aria-label="Competitor analysis spotlight">
+  <div class="wrap">
+    <div class="spotlight reverse reveal">
+      <div class="spotlight-text">
+        <p class="section-label">Competitor Analysis</p>
+        <h2>See exactly who is<br>outranking you — and why</h2>
+        <p>ASO Analytics automatically discovers apps competing for the same keywords, ranks them by similarity score, and surfaces their weaknesses from real user reviews.</p>
+        <ul class="spotlight-list">
+          <li>Auto-discovery of competitors matching your category and keywords</li>
+          <li>Similarity scoring to focus on your most direct threats</li>
+          <li>Review weakness analysis — find gaps in competitor positioning</li>
+          <li>Manual competitor additions for paid plans</li>
+        </ul>
+      </div>
+      <div class="mock-panel" aria-label="Competitor analysis preview" role="img">
+        <div class="mock-header">
+          <div class="mock-dot red"></div>
+          <div class="mock-dot yellow"></div>
+          <div class="mock-dot green"></div>
+          <span class="mock-title">competitors.json</span>
+        </div>
+        <div class="comp-row">
+          <div class="comp-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);" aria-hidden="true"></div>
+          <span class="comp-name">Calm — Sleep & Meditation</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="score-bar-wrap"><div class="score-bar" style="width:88%"></div></div>
+            <span class="comp-score">88%</span>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-icon" style="background: linear-gradient(135deg, #56ccf2, #2f80ed);" aria-hidden="true"></div>
+          <span class="comp-name">Headspace: Mindful Meditation</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="score-bar-wrap"><div class="score-bar" style="width:75%"></div></div>
+            <span class="comp-score">75%</span>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-icon" style="background: linear-gradient(135deg, #f7971e, #ffd200);" aria-hidden="true"></div>
+          <span class="comp-name">Insight Timer – Meditation App</span>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="score-bar-wrap"><div class="score-bar" style="width:62%"></div></div>
+            <span class="comp-score">62%</span>
+          </div>
+        </div>
+        <div class="insight-card" style="background:rgba(255,209,102,0.06);border-color:rgba(255,209,102,0.2);">
+          <strong style="color:var(--accent-2);">⚠ Weakness found:</strong> 38% of Headspace reviews mention "too expensive" — an opportunity to win price-sensitive users.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     PRICING
+=================================================== -->
+<section class="section" id="pricing" style="background: var(--ink-2);" aria-labelledby="pricing-heading">
+  <div class="wrap">
+    <header class="pricing-header reveal">
+      <p class="section-label">Simple pricing</p>
+      <h2 id="pricing-heading">Start free. Grow as you go.</h2>
+      <p>No hidden fees, no annual lock-in. Cancel anytime.</p>
+    </header>
+
+    <div class="pricing-grid" role="list">
+
+      <!-- Free -->
+      <article class="pricing-card reveal" role="listitem">
+        <p class="plan-name">Free</p>
+        <p class="plan-price">$0</p>
+        <p class="plan-price-sub">forever</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>1 app</li>
+          <li>10 tracked keywords</li>
+          <li>Weekly data refresh</li>
+          <li class="dim">Competitor analysis</li>
+          <li class="dim">Performance intelligence</li>
+          <li class="dim">ASO Diagnosis</li>
+        </ul>
+        <a href="https://aso.cristomade.it/auth/register" class="btn-plan">Start free</a>
+      </article>
+
+      <!-- Starter -->
+      <article class="pricing-card reveal reveal-d1" role="listitem">
+        <p class="plan-name">Starter</p>
+        <p class="plan-price"><sup>$</sup>19<span style="font-size:20px;font-family:var(--sans)">.90</span></p>
+        <p class="plan-price-sub">per month</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>3 apps</li>
+          <li>50 tracked keywords each</li>
+          <li>Daily data refresh</li>
+          <li>Competitor analysis</li>
+          <li>Performance intelligence</li>
+          <li class="dim">ASO Diagnosis</li>
+        </ul>
+        <a href="https://aso.cristomade.it/auth/register" class="btn-plan">Get Starter</a>
+      </article>
+
+      <!-- Pro (popular) -->
+      <article class="pricing-card popular reveal reveal-d2" role="listitem">
+        <div class="popular-tag">Most Popular</div>
+        <p class="plan-name">Pro</p>
+        <p class="plan-price"><sup>$</sup>49<span style="font-size:20px;font-family:var(--sans)">.90</span></p>
+        <p class="plan-price-sub">per month</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>10 apps</li>
+          <li>200 tracked keywords each</li>
+          <li>Daily data refresh (3×/day)</li>
+          <li>Full competitor intelligence</li>
+          <li>Performance intelligence</li>
+          <li>ASO Diagnosis</li>
+        </ul>
+        <a href="https://aso.cristomade.it/auth/register" class="btn-plan accent">Get Pro</a>
+      </article>
+
+      <!-- Elite -->
+      <article class="pricing-card reveal reveal-d3" role="listitem">
+        <p class="plan-name">Elite</p>
+        <p class="plan-price"><sup>$</sup>89<span style="font-size:20px;font-family:var(--sans)">.90</span></p>
+        <p class="plan-price-sub">per month</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>20 apps</li>
+          <li>500 tracked keywords each</li>
+          <li>Daily data refresh (5×/day)</li>
+          <li>Full competitor intelligence</li>
+          <li>Performance intelligence</li>
+          <li>ASO Diagnosis + priority support</li>
+        </ul>
+        <a href="https://aso.cristomade.it/auth/register" class="btn-plan">Get Elite</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     TESTIMONIALS
+=================================================== -->
+<section class="section" aria-labelledby="testimonials-heading">
+  <div class="wrap">
+    <header class="features-header reveal">
+      <p class="section-label">From the community</p>
+      <h2 id="testimonials-heading">What indie developers say</h2>
+    </header>
+    <div class="quotes-grid" role="list">
+
+      <article class="quote-card reveal" role="listitem">
+        <div class="quote-stars" aria-label="5 stars">★★★★★</div>
+        <p class="quote-text">"Finally an ASO tool that doesn't cost more than my app makes. The keyword intelligence alone paid for itself in the first week of optimising my metadata."</p>
+        <div class="quote-author">
+          <div class="quote-avatar" aria-hidden="true">M</div>
+          <div>
+            <p class="quote-name">Marco V.</p>
+            <p class="quote-role">iOS indie developer, Italy</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card reveal reveal-d1" role="listitem">
+        <div class="quote-stars" aria-label="5 stars">★★★★★</div>
+        <p class="quote-text">"The competitor weakness analysis is genuinely insightful. I discovered my biggest rival had a known UX problem — built a targeted feature and saw a category rank jump within 3 weeks."</p>
+        <div class="quote-author">
+          <div class="quote-avatar" aria-hidden="true" style="background: linear-gradient(135deg, var(--accent-2), var(--accent-3));">S</div>
+          <div>
+            <p class="quote-name">Sara L.</p>
+            <p class="quote-role">App studio founder, UK</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="quote-card reveal reveal-d2" role="listitem">
+        <div class="quote-stars" aria-label="5 stars">★★★★★</div>
+        <p class="quote-text">"I moved from manual spreadsheet tracking to ASO Analytics and got hours back every week. The dashboard is clean, fast, and actually surfaceable to non-technical stakeholders."</p>
+        <div class="quote-author">
+          <div class="quote-avatar" aria-hidden="true" style="background: linear-gradient(135deg, var(--accent-3), #c084fc);">T</div>
+          <div>
+            <p class="quote-name">Tom K.</p>
+            <p class="quote-role">Solo developer, Germany</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     FAQ
+=================================================== -->
+<section class="section-sm" id="faq" style="background: var(--ink-2);" aria-labelledby="faq-heading">
+  <div class="wrap-narrow">
+    <header class="features-header reveal" style="margin-bottom:48px;">
+      <p class="section-label">Questions</p>
+      <h2 id="faq-heading">Frequently asked</h2>
+    </header>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item reveal" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3>Does the free plan need a credit card?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" role="region">
+          <p>No. The free plan is completely free forever — no credit card, no trial period. You get 1 app, 10 keywords, and weekly refreshes with no strings attached.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3>What App Store Connect permissions do I need?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" role="region">
+          <p>You'll need an App Store Connect API key with "Sales and Reports" access to fetch performance metrics (downloads, impressions, page views). Keyword rank tracking works without API credentials for basic use; connecting ASC unlocks the full analytics dashboard.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d2" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3>How often are keyword rankings updated?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" role="region">
+          <p>Free plan: weekly. Starter & Pro: daily. Elite: up to 5 refreshes per day per app. You can also trigger a manual refresh from the dashboard at any time, subject to plan cooldown limits.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3>Can I track Android / Google Play apps?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" role="region">
+          <p>Not yet. ASO Analytics currently focuses exclusively on the Apple App Store. Google Play support is on the roadmap for a future phase.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d2" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3>Is my App Store Connect key stored securely?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" role="region">
+          <p>Yes. Your private key is encrypted at rest using AES-256 encryption before being stored in the database. It is never logged or transmitted in plaintext. You can revoke and replace it at any time from your settings page.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1" role="listitem">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          <h3>Can I cancel anytime?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-a" role="region">
+          <p>Absolutely. All paid plans are month-to-month. Cancel directly from your account settings — your access continues until the end of the current billing period, then you automatically drop to the free plan.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     FINAL CTA
+=================================================== -->
+<section class="section cta-section reveal" aria-label="Call to action">
+  <div class="wrap-narrow">
+    <h2>Your app deserves<br>to be <em class="serif" style="color:var(--accent-1);font-style:italic;">found.</em></h2>
+    <p>Join developers who track smarter, optimise faster, and grow their installs — for free.</p>
+    <div class="hero-actions">
+      <a href="https://aso.cristomade.it/auth/register" class="btn-primary">
+        Create your free account
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://aso.cristomade.it/auth/login" class="btn-secondary">Sign in</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================================================
+     FOOTER
+=================================================== -->
+<footer role="contentinfo">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+        <p style="margin-top:4px;">Built with ♥ for independent iOS developers.</p>
+      </div>
+      <nav class="footer-right" aria-label="Footer navigation">
+        <a href="https://aso.cristomade.it/">App</a>
+        <a href="https://aso.cristomade.it/payments/pricing">Pricing</a>
+        <a href="https://aso.cristomade.it/auth/register">Sign up</a>
+        <a href="https://aso.cristomade.it/auth/login">Login</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================================================
+     JAVASCRIPT
+=================================================== -->
+<script>
+  // ---- Navbar scroll effect ----
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // ---- Mobile nav toggle ----
+  function toggleMobileNav() {
+    const mn = document.getElementById('mobileNav');
+    mn.classList.toggle('open');
+    document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // ---- FAQ accordion ----
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', item.classList.contains('open'));
+  }
+  // Keyboard support for FAQ
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(q); }
+    });
+  });
+
+  // ---- Scroll reveal ----
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ---- Smooth anchor scroll with nav offset ----
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 80;
+      window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
