@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How the App Store Search Algorithm Actually Works (2026 Update) — ASO Analytics Blog</title>
+  <meta name="description" content="Five key signals that determine App Store rankings: metadata relevance, conversion rate, engagement, category signals, and review velocity. A practical guide for indie iOS developers." />
+  <meta name="author" content="CristoMade" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.cristomade.it/blog/articles/how-app-store-algorithm-works/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.cristomade.it/blog/articles/how-app-store-algorithm-works/" />
+  <meta property="og:title" content="How the App Store Search Algorithm Actually Works (2026 Update)" />
+  <meta property="og:description" content="Five key signals that determine App Store rankings — metadata relevance, conversion rate, engagement, category, and review velocity." />
+  <meta property="og:image" content="https://www.cristomade.it/og-image.png" />
+  <meta property="og:site_name" content="ASO Analytics by CristoMade" />
+  <meta property="article:published_time" content="2026-05-03" />
+  <meta property="article:author" content="CristoMade" />
+  <meta property="article:tag" content="ASO" />
+  <meta property="article:tag" content="App Store Optimization" />
+  <meta property="article:tag" content="iOS development" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How the App Store Search Algorithm Actually Works (2026 Update)" />
+  <meta name="twitter:description" content="Five key signals that determine App Store rankings — a practical guide for indie iOS developers." />
+  <meta name="twitter:image" content="https://www.cristomade.it/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How the App Store Search Algorithm Actually Works (2026 Update)",
+    "description": "Five key signals that determine App Store rankings — metadata relevance, conversion rate, engagement, category signals, and review velocity.",
+    "url": "https://www.cristomade.it/blog/articles/how-app-store-algorithm-works/",
+    "datePublished": "2026-05-03",
+    "author": { "@type": "Organization", "name": "CristoMade", "url": "https://www.cristomade.it/" },
+    "publisher": { "@type": "Organization", "name": "CristoMade", "url": "https://www.cristomade.it/" }
+  }
+  </script>
+
+  <style>
+    /* ===================================================
+       CSS CUSTOM PROPERTIES
+    =================================================== */
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --accent-1:  #5eecc0;
+      --accent-2:  #ffd166;
+      --accent-3:  #7c6fff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+      --radius:    10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ===================================================
+       LAYOUT
+    =================================================== */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===================================================
+       NAVIGATION
+    =================================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(14,15,17, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 52px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted-2); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--ink) !important;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14,15,17,0.97);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 24px; font-family: var(--serif); color: var(--white); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--accent-1); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 24px; cursor: pointer; color: var(--muted-2); }
+
+    /* ===================================================
+       ARTICLE HEADER
+    =================================================== */
+    .article-header {
+      padding: 140px 0 64px;
+      max-width: 760px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .article-breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: var(--accent-1); }
+    .article-breadcrumb span { color: var(--muted); opacity: 0.4; }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .article-category {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      background: rgba(124,111,255,0.1);
+      border: 1px solid rgba(124,111,255,0.2);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .article-date {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .article-readtime {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .article-readtime::before { content: '·'; margin-right: 14px; }
+    .article-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .article-header .lede {
+      font-size: 18px;
+      color: var(--muted-2);
+      line-height: 1.75;
+      font-weight: 300;
+      border-left: 3px solid var(--accent-1);
+      padding-left: 20px;
+    }
+
+    /* ===================================================
+       ARTICLE DIVIDER
+    =================================================== */
+    .article-divider {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0;
+    }
+
+    /* ===================================================
+       ARTICLE BODY
+    =================================================== */
+    .article-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .article-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted-2);
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .article-body p strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      color: var(--white);
+      margin-top: 56px;
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--white);
+      margin-top: 32px;
+      margin-bottom: 14px;
+    }
+    .article-body ul, .article-body ol {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .article-body ul li {
+      font-size: 15px;
+      color: var(--muted-2);
+      font-weight: 300;
+      line-height: 1.7;
+      padding-left: 20px;
+      position: relative;
+    }
+    .article-body ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--accent-1);
+      font-size: 9px;
+      top: 6px;
+    }
+    .article-body ul li strong { color: var(--white); font-weight: 600; }
+    .article-body ol { counter-reset: list; }
+    .article-body ol li {
+      font-size: 15px;
+      color: var(--muted-2);
+      font-weight: 300;
+      line-height: 1.7;
+      padding-left: 28px;
+      position: relative;
+      counter-increment: list;
+    }
+    .article-body ol li::before {
+      content: counter(list);
+      position: absolute;
+      left: 0;
+      color: var(--accent-1);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      top: 3px;
+      width: 18px;
+      text-align: right;
+    }
+    .article-body ol li strong { color: var(--white); font-weight: 600; }
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 48px 0;
+    }
+    .article-body a {
+      color: var(--accent-1);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s;
+    }
+    .article-body a:hover { opacity: 0.8; }
+    .article-body em { font-style: italic; }
+    .article-body code {
+      font-family: var(--mono);
+      font-size: 13px;
+      background: rgba(255,255,255,0.08);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--accent-1);
+    }
+
+    /* Callout boxes */
+    .callout {
+      background: rgba(94, 236, 192, 0.06);
+      border: 1px solid rgba(94, 236, 192, 0.2);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      color: var(--muted-2);
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--accent-1); }
+    .callout.amber {
+      background: rgba(255,209,102,0.06);
+      border-color: rgba(255,209,102,0.2);
+    }
+    .callout.amber strong { color: var(--accent-2); }
+    .callout.purple {
+      background: rgba(124,111,255,0.07);
+      border-color: rgba(124,111,255,0.2);
+    }
+    .callout.purple strong { color: var(--accent-3); }
+
+    /* Code comparison block */
+    .code-block {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 24px 0;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .code-block .label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .code-block .label.bad { color: #f87171; }
+    .code-block .label.good { color: var(--accent-1); }
+    .code-block p { font-size: 13px; font-family: var(--mono); color: var(--muted-2); margin-bottom: 6px; font-weight: 400; }
+    .code-block p strong { color: var(--white); font-weight: 500; }
+    .code-block p span.val { color: var(--accent-2); }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--accent-3);
+      padding: 4px 0 4px 24px;
+      margin: 40px 0;
+    }
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 24px) !important;
+      font-weight: 400 !important;
+      color: var(--white) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 0 !important;
+      font-style: italic;
+    }
+
+    /* ===================================================
+       ARTICLE FOOTER / CTA
+    =================================================== */
+    .article-end {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 48px;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+    .article-cta {
+      background: var(--ink-2);
+      border: 1px solid rgba(94,236,192,0.2);
+      border-radius: 14px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-cta::before {
+      content: '';
+      position: absolute;
+      left: -40px; top: -40px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(94,236,192,0.1), transparent 65%);
+      pointer-events: none;
+    }
+    .article-cta-text h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .article-cta-text p { font-size: 14px; color: var(--muted-2); font-weight: 300; max-width: 380px; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-1);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 28px rgba(94, 236, 192, 0.28);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(94,236,192,0.42); }
+
+    /* Next article teaser */
+    .next-article {
+      margin-top: 40px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .next-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .next-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--muted-2);
+      max-width: 480px;
+    }
+    .next-arrow {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--accent-1);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+      margin-bottom: 40px;
+    }
+    .back-link:hover { color: var(--accent-1); }
+
+    /* ===================================================
+       FOOTER
+    =================================================== */
+    footer { border-top: 1px solid var(--line); padding: 48px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .footer-right a:hover { color: var(--white); }
+
+    /* ===================================================
+       PROGRESS BAR
+    =================================================== */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    /* ===================================================
+       RESPONSIVE
+    =================================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .article-cta { flex-direction: column; align-items: flex-start; padding: 28px; }
+      .next-article { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Read progress bar -->
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">✕</span>
+  <a href="/#features" onclick="toggleMobileNav()">Features</a>
+  <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="toggleMobileNav()">FAQ</a>
+  <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+  <a href="https://aso.cristomade.it/" class="btn-primary" style="font-size:16px;margin-top:8px;">Start Free</a>
+</nav>
+
+<!-- Navigation -->
+<header class="nav" id="mainNav" role="banner">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <img src="/ASO_WEBSITE_BANNER_2.svg" alt="ASO Analytics" width="130" height="40" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="https://aso.cristomade.it/auth/login">Sign in</a></li>
+      <li><a href="https://aso.cristomade.it/auth/register" class="nav-cta">Get started free</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- Article Header -->
+<article>
+  <header class="article-header">
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/">Blog</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">App Store Algorithm</span>
+    </nav>
+    <div class="article-meta">
+      <span class="article-category">ASO Fundamentals</span>
+      <span class="article-date">May 3, 2026</span>
+      <span class="article-readtime">7 min read</span>
+    </div>
+    <h1>How the App Store Search Algorithm Actually Works (2026 Update)</h1>
+    <p class="lede">
+      Every indie developer has been there: you launch your app, check the keywords, and… nothing. You're nowhere. Meanwhile some mediocre app with a worse UX is sitting on page one. It's not magic. It's not luck. Here's what's actually happening.
+    </p>
+  </header>
+
+  <div class="article-divider"></div>
+
+  <!-- Article Body -->
+  <div class="article-body">
+
+    <h2>The Algorithm's Core Job</h2>
+
+    <p>Apple's search algorithm has one goal: <strong>show the most relevant and highest-quality app for a given query.</strong></p>
+
+    <p>That sounds obvious, but it has big implications. "Relevant" means your metadata matches the intent. "Quality" means users actually like and keep your app. You can't fake either of these long-term. But you can optimise for both.</p>
+
+    <div class="pull-quote">
+      <p>"The algorithm rewards relevance and quality. Everything else is noise."</p>
+    </div>
+
+    <h2>Signal #1: Metadata Relevance (You Control This 100%)</h2>
+
+    <p>The App Store crawls and indexes the following text fields:</p>
+
+    <ul>
+      <li><strong>App name</strong> (30 characters) — highest weight, treat this like an SEO title tag</li>
+      <li><strong>Subtitle</strong> (30 characters) — second most powerful, often underused</li>
+      <li><strong>Keyword field</strong> (100 characters) — comma-separated, no spaces after commas, no repeated words</li>
+      <li><strong>In-app purchase names</strong> — yes, these are indexed</li>
+      <li><strong>Developer name</strong> — indexed and contributes to branded search</li>
+    </ul>
+
+    <p>What is <em>not</em> indexed for search ranking:</p>
+
+    <ul>
+      <li>Description (used for conversion, not ranking)</li>
+      <li>What's New / release notes</li>
+    </ul>
+
+    <div class="callout amber">
+      <strong>⚠ The key rule:</strong> Don't repeat words across fields. If "planner" is in your app name, don't use it in keywords — you wasted 7 characters. Apple already connects the dots.
+    </div>
+
+    <h3>Practical Example</h3>
+
+    <div class="code-block">
+      <div class="label bad">✕ Bad approach — lots of overlap</div>
+      <p><strong>Name:</strong> <span class="val">"Daily Planner - Goal Tracker"</span></p>
+      <p><strong>Subtitle:</strong> <span class="val">"Daily Goals and Habit Tracker"</span></p>
+      <p><strong>Keywords:</strong> <span class="val">"daily,planner,goals,habit,tracker,tasks"</span></p>
+    </div>
+
+    <div class="code-block" style="margin-top:0;">
+      <div class="label good">✓ Good approach — maximises unique coverage</div>
+      <p><strong>Name:</strong> <span class="val">"Daily Planner - Goal Tracker"</span></p>
+      <p><strong>Subtitle:</strong> <span class="val">"Tasks, Habits &amp; Productivity"</span></p>
+      <p><strong>Keywords:</strong> <span class="val">"to-do,schedule,routine,checklist,agenda,organizer,reminder,focus,weekly"</span></p>
+    </div>
+
+    <p>Same 160 characters — but version 2 covers 9 unique search concepts instead of 3.</p>
+
+    <hr />
+
+    <h2>Signal #2: Conversion Rate (Users Decide This)</h2>
+
+    <p>Here's what most guides miss: <strong>Apple factors in how many people tap your app after seeing it in search results.</strong></p>
+
+    <p>If 100 people search for "habit tracker", see your app, and only 2 tap it — that's a 2% conversion rate. If the app below you has a 12% conversion rate, they'll rank above you over time. The algorithm reads this as "users prefer that result."</p>
+
+    <p>What drives conversion rate in search results?</p>
+
+    <ol>
+      <li><strong>App icon</strong> — people judge in milliseconds</li>
+      <li><strong>App name</strong> — does it match what they searched?</li>
+      <li><strong>Rating and review count</strong> — social proof before they even tap</li>
+      <li><strong>First screenshot</strong> — visible in search results on some queries</li>
+      <li><strong>Price</strong> — free vs. paid is a real filter</li>
+    </ol>
+
+    <p>You have partial control over all of these. Screenshot 1 and your icon are the highest-leverage things to A/B test.</p>
+
+    <hr />
+
+    <h2>Signal #3: Engagement &amp; Retention (Apple Watches This Quietly)</h2>
+
+    <p>Apple has access to aggregate data on:</p>
+
+    <ul>
+      <li>How long users keep your app after download</li>
+      <li>Whether users open your app after installing (day 1, day 7, day 30)</li>
+      <li>Crash rate and ANR (app not responding) events</li>
+      <li>Rating and review velocity</li>
+    </ul>
+
+    <p>A flood of 1-star reviews tanked by a buggy update will hurt rankings — not just conversions. Apple's algorithm depresses visibility for apps with poor quality signals. This is why shipping broken updates is a double loss: users leave <em>and</em> you drop in search.</p>
+
+    <div class="callout">
+      <strong>💡 The flywheel:</strong> Good engagement → better rankings → more organic traffic → more good engagement. Get this loop spinning and growth becomes self-sustaining.
+    </div>
+
+    <hr />
+
+    <h2>Signal #4: Category &amp; Browse Rankings</h2>
+
+    <p>Search rankings and browse rankings (Top Charts, Featured) are separate — but connected.</p>
+
+    <p>If your app climbs in Top Charts (usually driven by download velocity), it gets more browse exposure, which drives more downloads, which can reinforce keyword rankings.</p>
+
+    <p>For indie devs with small install bases, trying to game Top Charts is usually a dead end. Focus on <strong>search</strong> — it's where high-intent users are, and it rewards relevance over budget.</p>
+
+    <hr />
+
+    <h2>Signal #5: Reviews (Velocity Matters More Than Volume)</h2>
+
+    <p>It's not just your average rating — it's whether people are leaving reviews <em>right now</em>.</p>
+
+    <p>An app with 500 reviews from 3 years ago can rank below an app with 50 reviews from the last 60 days. Apple interprets recent reviews as evidence the app is actively maintained and used.</p>
+
+    <div class="callout purple">
+      <strong>Best practice:</strong> Always have an in-app review prompt. Trigger it at moments of delight — after a task is completed, after a streak, after achieving a goal. The iOS <code>SKStoreReviewController</code> API is your friend. Time the prompt correctly and you'll consistently see 4-5 star reviews.
+    </div>
+
+    <hr />
+
+    <h2>What Doesn't Work (Stop Wasting Time)</h2>
+
+    <p><strong>Keyword stuffing the description.</strong> The description doesn't rank you. It's a conversion tool. Use it to sell the user, not the algorithm.</p>
+
+    <p><strong>Launching with zero reviews and expecting search traffic.</strong> You need social proof before organic search converts well. Get 10–20 genuine reviews from beta testers, friends, or early users before you push for keyword rankings.</p>
+
+    <p><strong>Chasing high-volume head terms.</strong> "Fitness app" has 50,000 apps competing for it. "Half marathon training 12 weeks" has 30. The second keyword converts better and you can actually rank for it. Long-tail wins for small developers.</p>
+
+    <p><strong>Changing keywords too often.</strong> Every time you update your metadata, Apple re-indexes you. You may temporarily disappear from rankings you had. Stability beats constant tweaking once you've found a working keyword set.</p>
+
+    <hr />
+
+    <h2>How to Actually Track This</h2>
+
+    <p>You need data to know if any of this is working. At minimum, track:</p>
+
+    <ol>
+      <li><strong>Keyword position</strong> for your target terms — are you moving up or down?</li>
+      <li><strong>Impressions vs. downloads</strong> — conversion rate trend</li>
+      <li><strong>Review velocity</strong> — reviews per week this month vs. last month</li>
+      <li><strong>Competitor rankings</strong> — are they gaining ground on your keywords?</li>
+    </ol>
+
+    <p>App Store Connect gives you some of this. For keyword position tracking and competitor intelligence, that's where a dedicated ASO analytics tool becomes worth it — manually tracking 20+ keywords across 5+ apps in a spreadsheet is how you burn an hour a week on a task a machine should do.</p>
+
+    <hr />
+
+    <h2>The One-Sentence Summary</h2>
+
+    <p>The App Store algorithm rewards <strong>relevance</strong> (your metadata matches search intent) and <strong>quality</strong> (users like your app enough to install, keep, and review it). Everything else is noise.</p>
+
+    <p>Get those two things right, and rankings will follow.</p>
+
+  </div><!-- .article-body -->
+
+  <!-- Article End: Tags + CTA -->
+  <div class="article-end">
+
+    <div class="article-tags" aria-label="Article tags">
+      <span class="tag">ASO</span>
+      <span class="tag">App Store Optimization</span>
+      <span class="tag">Keyword Strategy</span>
+      <span class="tag">iOS Dev</span>
+      <span class="tag">Indie Developer</span>
+      <span class="tag">App Discovery</span>
+    </div>
+
+    <div class="article-cta">
+      <div class="article-cta-text">
+        <h3>Track your keyword rankings automatically</h3>
+        <p>ASO Analytics monitors every keyword you care about — daily — so you always know what's moving. Free plan available, no credit card required.</p>
+      </div>
+      <a href="https://aso.cristomade.it/auth/register" class="btn-primary">
+        Start for free
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="next-article">
+      <div>
+        <p class="next-label">Up next</p>
+        <p class="next-title">The 5 Keyword Mistakes That Kill Your App's Visibility</p>
+      </div>
+      <span class="next-arrow" aria-label="Coming soon">
+        Coming soon
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7H2.5M6.5 11L2.5 7L6.5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to all articles
+    </a>
+
+  </div>
+</article>
+
+</main>
+
+<!-- Footer -->
+<footer role="contentinfo">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+        <p style="margin-top:4px;">Built with ♥ for independent iOS developers.</p>
+      </div>
+      <nav class="footer-right" aria-label="Footer navigation">
+        <a href="https://aso.cristomade.it/">App</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://aso.cristomade.it/auth/register">Sign up</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile nav
+  function toggleMobileNav() {
+    const mn = document.getElementById('mobileNav');
+    mn.classList.toggle('open');
+    document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // Read progress bar
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (window.scrollY / docHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+</script>
+
+</body>
+</html>

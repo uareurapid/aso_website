@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASO Blog — App Store Optimization Tips & Strategies</title>
+  <meta name="description" content="Practical guides, strategies, and insights for iOS developers who want to rank higher on the App Store. ASO tips from the team at ASO Analytics." />
+  <meta name="author" content="CristoMade" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.cristomade.it/blog/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.cristomade.it/blog/" />
+  <meta property="og:title" content="ASO Blog — App Store Optimization Tips & Strategies" />
+  <meta property="og:description" content="Practical guides, strategies, and insights for iOS developers who want to rank higher on the App Store." />
+  <meta property="og:image" content="https://www.cristomade.it/og-image.png" />
+  <meta property="og:site_name" content="ASO Analytics by CristoMade" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================================================
+       CSS CUSTOM PROPERTIES (mirror from main site)
+    =================================================== */
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --off-white: #f5f4f0;
+      --cream:     #faf8f4;
+      --accent-1:  #5eecc0;
+      --accent-2:  #ffd166;
+      --accent-3:  #7c6fff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+      --radius:    10px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.18);
+      --shadow-md: 0 8px 32px rgba(0,0,0,0.28);
+      --shadow-lg: 0 24px 64px rgba(0,0,0,0.36);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ink);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ===================================================
+       LAYOUT
+    =================================================== */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 112px 0; }
+    .section-sm { padding: 72px 0; }
+    .serif { font-family: var(--serif); }
+
+    /* ===================================================
+       NAVIGATION (identical to main site)
+    =================================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(14,15,17, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 52px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted-2); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--ink) !important;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(14,15,17,0.97);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 24px; font-family: var(--serif); color: var(--white); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--accent-1); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 24px; cursor: pointer; color: var(--muted-2); }
+
+    /* ===================================================
+       BLOG HERO
+    =================================================== */
+    .blog-hero {
+      padding: 140px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse at center,
+        rgba(94, 236, 192, 0.09) 0%,
+        rgba(124, 111, 255, 0.06) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+    .blog-hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .blog-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      border: 1px solid rgba(94, 236, 192, 0.22);
+      background: rgba(94, 236, 192, 0.06);
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .blog-hero h1 em { font-style: italic; color: var(--accent-1); }
+    .blog-hero-sub {
+      font-size: 17px;
+      color: var(--muted-2);
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ===================================================
+       FEATURED ARTICLE
+    =================================================== */
+    .featured-wrap {
+      margin-top: 64px;
+    }
+    .featured-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      margin-bottom: 20px;
+    }
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .featured-card:hover {
+      border-color: rgba(94, 236, 192, 0.25);
+      transform: translateY(-3px);
+    }
+    .featured-visual {
+      background: linear-gradient(135deg, rgba(94,236,192,0.08) 0%, rgba(124,111,255,0.12) 60%, rgba(255,209,102,0.06) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+      min-height: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 39px,
+        rgba(255,255,255,0.025) 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 39px,
+        rgba(255,255,255,0.025) 40px
+      );
+    }
+    .featured-visual-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .featured-visual-icon {
+      font-size: 64px;
+      margin-bottom: 12px;
+      display: block;
+      filter: drop-shadow(0 0 24px rgba(94,236,192,0.3));
+    }
+    .featured-visual-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent-1);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(94,236,192,0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(94,236,192,0.07);
+    }
+    .featured-content {
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .article-category {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      background: rgba(124,111,255,0.1);
+      border: 1px solid rgba(124,111,255,0.2);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .article-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .article-readtime {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .article-readtime::before { content: '·'; margin-right: 14px; }
+    .featured-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+    .featured-content p {
+      font-size: 14px;
+      color: var(--muted-2);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-1);
+      transition: gap 0.2s;
+    }
+    .article-link:hover { gap: 12px; }
+    .article-link svg { flex-shrink: 0; transition: transform 0.2s; }
+    .article-link:hover svg { transform: translateX(2px); }
+
+    /* ===================================================
+       ARTICLE GRID
+    =================================================== */
+    .articles-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .articles-header h2 {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .articles-header span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .article-card {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+    .article-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-3px);
+    }
+    .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(94, 236, 192, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .article-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: var(--white);
+      flex-grow: 1;
+    }
+    .article-card p {
+      font-size: 13px;
+      color: var(--muted-2);
+      line-height: 1.7;
+      font-weight: 300;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+    .card-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ===================================================
+       EMPTY STATES (for coming-soon articles)
+    =================================================== */
+    .article-card.coming-soon {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .article-card.coming-soon:hover {
+      transform: none;
+      border-color: var(--line);
+    }
+    .coming-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    /* ===================================================
+       CTA BANNER
+    =================================================== */
+    .blog-cta {
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-cta::before {
+      content: '';
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(124,111,255,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .blog-cta-text h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .blog-cta-text p {
+      font-size: 14px;
+      color: var(--muted-2);
+      font-weight: 300;
+      max-width: 400px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-1);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 32px rgba(94, 236, 192, 0.3);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 48px rgba(94, 236, 192, 0.45);
+    }
+
+    /* ===================================================
+       FOOTER
+    =================================================== */
+    footer { border-top: 1px solid var(--line); padding: 48px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .footer-right a:hover { color: var(--white); }
+
+    /* ===================================================
+       SCROLL REVEAL
+    =================================================== */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ===================================================
+       RESPONSIVE
+    =================================================== */
+    @media (max-width: 1024px) {
+      .articles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-visual { min-height: 200px; padding: 32px; }
+      .featured-content { padding: 32px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .blog-cta { flex-direction: column; align-items: flex-start; padding: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">✕</span>
+  <a href="/#features" onclick="toggleMobileNav()">Features</a>
+  <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="toggleMobileNav()">FAQ</a>
+  <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+  <a href="https://aso.cristomade.it/" class="btn-primary" style="font-size:16px; margin-top:8px;">Start Free</a>
+</nav>
+
+<!-- Navigation -->
+<header class="nav" id="mainNav" role="banner">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <img src="/ASO_WEBSITE_BANNER_2.svg" alt="ASO Analytics" width="130" height="40" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="https://aso.cristomade.it/auth/login">Sign in</a></li>
+      <li><a href="https://aso.cristomade.it/auth/register" class="nav-cta">Get started free</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- Blog Hero -->
+<div class="blog-hero">
+  <div class="wrap">
+    <div class="blog-hero-inner reveal">
+      <div class="blog-eyebrow">ASO Knowledge Base</div>
+      <h1>Rank higher.<br><em>Learn</em> how.</h1>
+      <p class="blog-hero-sub">
+        Practical ASO strategies, keyword tactics, and App Store intelligence — written for indie iOS developers who want results, not fluff.
+      </p>
+    </div>
+
+    <!-- Featured article -->
+    <div class="featured-wrap reveal reveal-d1">
+      <p class="featured-label">Latest article</p>
+      <a href="/blog/articles/how-app-store-algorithm-works/" class="featured-card" aria-label="Read: How the App Store Search Algorithm Actually Works">
+        <div class="featured-visual">
+          <div class="featured-visual-inner">
+            <span class="featured-visual-icon">🔍</span>
+            <div class="featured-visual-tag">ASO Fundamentals</div>
+          </div>
+        </div>
+        <div class="featured-content">
+          <div class="featured-meta">
+            <span class="article-category">ASO Fundamentals</span>
+            <span class="article-date">May 3, 2026</span>
+            <span class="article-readtime">7 min read</span>
+          </div>
+          <h2>How the App Store Search Algorithm Actually Works (2026 Update)</h2>
+          <p>Every indie developer has been there: you launch your app, check the keywords, and see nothing. Meanwhile some mediocre app is sitting on page one. It's not magic. Here's what's actually happening under the hood — and how to compete.</p>
+          <span class="article-link">
+            Read article
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Articles Grid -->
+<section class="section-sm" aria-labelledby="all-articles-heading">
+  <div class="wrap">
+    <div class="articles-header reveal">
+      <h2 id="all-articles-heading">All articles</h2>
+      <span>1 article</span>
+    </div>
+
+    <div class="articles-grid">
+
+      <!-- Article 1 -->
+      <a href="/blog/articles/how-app-store-algorithm-works/" class="article-card reveal">
+        <div class="card-icon">🔍</div>
+        <div class="card-meta">
+          <span class="article-category">ASO Fundamentals</span>
+        </div>
+        <h3>How the App Store Search Algorithm Actually Works</h3>
+        <p>Five key signals that determine your ranking — metadata relevance, conversion rate, engagement, category signals, and review velocity.</p>
+        <div class="card-footer">
+          <span class="article-date">May 3, 2026</span>
+          <span class="article-link" style="font-size:13px;">
+            Read
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Coming soon 2 -->
+      <div class="article-card coming-soon reveal reveal-d1" aria-hidden="true">
+        <div class="card-icon" style="background:rgba(255,209,102,0.07);">⚠️</div>
+        <div class="card-meta">
+          <span class="article-category" style="color:var(--accent-2);background:rgba(255,209,102,0.08);border-color:rgba(255,209,102,0.2);">Keyword Strategy</span>
+          <span class="coming-tag">Coming soon</span>
+        </div>
+        <h3>The 5 Keyword Mistakes That Kill Your App's Visibility</h3>
+        <p>Wasted characters, duplicate terms, chasing head terms — the most common metadata errors and how to fix them fast.</p>
+        <div class="card-footer">
+          <span class="article-date">Coming soon</span>
+        </div>
+      </div>
+
+      <!-- Coming soon 3 -->
+      <div class="article-card coming-soon reveal reveal-d2" aria-hidden="true">
+        <div class="card-icon" style="background:rgba(124,111,255,0.1);">⚔️</div>
+        <div class="card-meta">
+          <span class="article-category">Competitor Intel</span>
+          <span class="coming-tag">Coming soon</span>
+        </div>
+        <h3>How to Use Competitor Review Analysis to Win Their Users</h3>
+        <p>Mining 1-star reviews from competing apps is one of the fastest ways to find your next differentiating feature.</p>
+        <div class="card-footer">
+          <span class="article-date">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm" aria-label="App CTA">
+  <div class="wrap">
+    <div class="blog-cta reveal">
+      <div class="blog-cta-text">
+        <h3>Put the theory into practice</h3>
+        <p>Track your keyword rankings, monitor competitors, and get your ASO health score — all in one dashboard. Free plan available.</p>
+      </div>
+      <a href="https://aso.cristomade.it/auth/register" class="btn-primary">
+        Start free
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer role="contentinfo">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+        <p style="margin-top:4px;">Built with ♥ for independent iOS developers.</p>
+      </div>
+      <nav class="footer-right" aria-label="Footer navigation">
+        <a href="https://aso.cristomade.it/">App</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://aso.cristomade.it/auth/register">Sign up</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  function toggleMobileNav() {
+    const mn = document.getElementById('mobileNav');
+    mn.classList.toggle('open');
+    document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+  }
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.06 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
