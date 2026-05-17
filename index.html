@@ -467,6 +467,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
+      border-radius: 12px;
+      overflow: hidden;
     }
     .feature-card {
       background: var(--ink-2);
@@ -476,10 +478,6 @@
       transition: background 0.2s;
     }
     .feature-card:hover { background: var(--ink-3); }
-    .feature-card:first-child { border-radius: 12px 0 0 0; }
-    .feature-card:nth-child(3) { border-radius: 0 12px 0 0; }
-    .feature-card:nth-child(4) { border-radius: 0 0 0 12px; }
-    .feature-card:last-child { border-radius: 0 0 12px 0; }
     /* Accent line on top of featured card */
     .feature-card.featured::before {
       content: '';
@@ -999,11 +997,6 @@
     =================================================== */
     @media (max-width: 1024px) {
       .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .feature-card:first-child  { border-radius: 12px 0 0 0; }
-      .feature-card:nth-child(2) { border-radius: 0 12px 0 0; }
-      .feature-card:nth-child(3) { border-radius: 0 0 0 0; }
-      .feature-card:nth-child(5) { border-radius: 0 0 0 12px; }
-      .feature-card:last-child   { border-radius: 0 0 12px 0; }
       .pricing-grid { grid-template-columns: repeat(2, 1fr); }
       .spotlight { grid-template-columns: 1fr; gap: 40px; }
       .spotlight.reverse { direction: ltr; }
@@ -1013,9 +1006,6 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .features-grid { grid-template-columns: 1fr; }
-      .feature-card { border-radius: 0 !important; }
-      .feature-card:first-child { border-radius: 12px 12px 0 0 !important; }
-      .feature-card:last-child  { border-radius: 0 0 12px 12px !important; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
       .quotes-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 10px; }
@@ -1148,8 +1138,9 @@
       <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Competitor Intelligence</div>
       <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Performance Analytics</div>
       <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Traffic Source Breakdown</div>
-      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Review Monitoring</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Review Replies</div>
       <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> ASO Health Diagnosis</div>
+      <div class="proof-item" role="listitem"><div class="proof-item-dot"></div> Top Charts</div>
     </div>
   </div>
 </div>
@@ -1163,7 +1154,7 @@
     <header class="features-header reveal">
       <p class="section-label">Everything you need</p>
       <h2 id="features-heading">ASO intelligence,<br>without the bloat</h2>
-      <p>Six integrated modules that work together to surface exactly what's moving the needle for your app's discoverability.</p>
+      <p>Eight integrated modules that work together to surface exactly what's moving the needle for your app's discoverability.</p>
     </header>
 
     <div class="features-grid" role="list">
@@ -1208,6 +1199,26 @@
         <h3>Traffic Source Breakdown</h3>
         <p>Understand whether users find you through search, browse, or referral — so you can double down on the channels that actually convert to installs.</p>
         <span class="feature-tag">Attribution</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d1" role="listitem">
+        <div class="feature-icon amber" aria-hidden="true">💬</div>
+        <h3>Review Replies</h3>
+        <p>Reply to user reviews directly from the dashboard. Build reusable reply templates, and get instant alerts the moment a new review drops — so you never miss an engagement opportunity.</p>
+        <span class="feature-tag">Engagement</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d2" role="listitem">
+        <div class="feature-icon purple" aria-hidden="true">🏆</div>
+        <h3>Top Charts</h3>
+        <p>Browse the App Store Top 100 across Paid, Free, and Grossing rankings. Filter by category and track daily movers — see who climbed or dropped overnight before your competitors do.</p>
+        <span class="feature-tag">Market Intel</span>
+      </article>
+
+      <article class="feature-card reveal reveal-d3" role="listitem" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0.5;">
+        <div style="font-size:28px;margin-bottom:16px;">✦</div>
+        <h3 style="font-size:15px;font-weight:500;color:var(--muted-2);">More features coming soon</h3>
+        <p style="font-size:13px;margin-top:8px;">We're always building — stay tuned.</p>
       </article>
 
     </div>
