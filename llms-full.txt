@@ -1,0 +1,84 @@
+# ASO Analytics — Full Reference
+
+> App Store Optimization intelligence for iOS developers. Track keyword rankings, monitor competitors, and grow your app's organic visibility — without the enterprise price tag.
+
+ASO Analytics is a web-based SaaS platform built by CristoMade for indie iOS developers and small teams. It connects to App Store Connect and provides eight integrated modules covering keyword tracking, competitor intelligence, performance analytics, metadata diagnosis, and review management — all in one dashboard.
+
+**Website:** https://aso.cristomade.it/  
+**Made by:** CristoMade (https://www.cristomade.it/)
+
+---
+
+## Features
+
+### 📈 Keyword Rank Tracking
+Monitor your App Store position for every keyword you care about — tracked daily with trend history so you can see the arc, not just the snapshot.
+
+### 🔍 Keyword Intelligence
+Volume tiers, difficulty scores, opportunity ratings (Poor / Fair / Good / Excellent), and trend signals computed automatically. Helps you identify which keywords are worth fighting for based on real search signals.
+
+### ⚔️ Competitor Analysis
+Auto-discovers apps competing for the same keywords, ranks them by similarity score, and surfaces weaknesses from real user reviews. Includes keyword overlap analysis and manual competitor additions (paid plans). Supports identifying competitor review pain points — e.g., pricing complaints — as positioning opportunities.
+
+### 📊 Performance Analytics
+Downloads, impressions, page views, and conversion rates pulled directly from App Store Connect — plotted over 30 days with smart anomaly callouts. Requires App Store Connect API key with "Sales and Reports" access.
+
+### 🩺 ASO Diagnosis
+Full health check on app metadata: title, subtitle, description, screenshots, and keyword field. Returns a prioritised action list to address every gap.
+
+### 🚦 Traffic Source Breakdown
+Attribution by channel: search, browse, or referral — so you can double down on the channels that convert to installs.
+
+### 💬 Review Replies
+Reply to user reviews directly from the dashboard. Build reusable reply templates and get instant alerts when new reviews drop.
+
+### 🏆 Top Charts
+Browse App Store Top 100 across Paid, Free, and Grossing rankings. Filter by category and track daily movers — see who climbed or dropped overnight.
+
+---
+
+## Pricing
+
+All plans are month-to-month. No annual lock-in. Cancel anytime.
+
+| Plan | Price | Apps | Keywords/App | Refresh Rate |
+|------|-------|------|--------------|-------------|
+| Free | $0/mo forever | 1 | 10 | Weekly |
+| Starter | $9.90/mo | 3 | 50 | Daily |
+| Pro | $19.90/mo | 10 | 200 | 3×/day |
+| Elite | $49.90/mo | 20 | 500 | 5×/day + priority support |
+
+All paid plans include: Competitor analysis, Performance intelligence, ASO Diagnosis.  
+No credit card required for Free plan.
+
+---
+
+## FAQ
+
+**Does the free plan need a credit card?**  
+No. Free forever — no trial, no card. 1 app, 10 keywords, weekly refresh.
+
+**What App Store Connect permissions are needed?**  
+"Sales and Reports" API key access for performance metrics (downloads, impressions, page views). Keyword rank tracking works without credentials; connecting ASC unlocks the full analytics dashboard.
+
+**How often are rankings updated?**  
+Free: weekly. Starter/Pro: daily. Elite: up to 5 refreshes/day. Manual refresh available subject to plan cooldown.
+
+**Can I track Google Play apps?**  
+Not currently. iOS App Store only. Google Play is on the roadmap.
+
+**Is my App Store Connect key stored securely?**  
+Yes. Encrypted at rest with AES-256 before storage. Never logged or transmitted in plaintext. Revocable at any time from account settings.
+
+**Can I cancel anytime?**  
+Yes. Cancel from account settings — access continues to end of billing period, then downgrades to free automatically.
+
+---
+
+## Links
+
+- Home: https://aso.cristomade.it/
+- Blog: https://aso.cristomade.it/blog/
+- Privacy Policy: https://aso.cristomade.it/privacy.html
+- Terms of Service: https://aso.cristomade.it/terms.html
+- Sign Up: https://aso.cristomade.it/ (Get started free)

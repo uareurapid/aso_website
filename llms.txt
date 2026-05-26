@@ -1,0 +1,36 @@
+# ASO Analytics
+
+> App Store Optimization intelligence for iOS developers. Track keyword rankings, monitor competitors, and grow your app's organic visibility — without the enterprise price tag.
+
+ASO Analytics is a web-based SaaS tool built for indie iOS developers and small teams who want to improve their App Store presence through data. It connects to App Store Connect and surfaces actionable keyword, competitor, and performance data in one dashboard.
+
+## Key Pages
+
+- [Home](https://aso.cristomade.it/): Overview, features, and pricing
+- [Blog](https://aso.cristomade.it/blog/): ASO tips and guides
+- [Privacy Policy](https://aso.cristomade.it/privacy.html)
+- [Terms of Service](https://aso.cristomade.it/terms.html)
+
+## Features
+
+- **Keyword Rank Tracking** — Daily ranking updates with trend history
+- **Keyword Intelligence** — Volume tiers, difficulty scores, opportunity ratings
+- **Competitor Analysis** — Auto-discovery of competing apps, keyword overlap, review weakness analysis
+- **Performance Analytics** — Downloads, impressions, page views, conversion rates from App Store Connect
+- **ASO Diagnosis** — Full health check on metadata: title, subtitle, description, screenshots, keyword field
+- **Traffic Source Breakdown** — Search vs. browse vs. referral attribution
+- **Review Replies** — Reply to reviews from the dashboard with reusable templates
+- **Top Charts** — Browse App Store Top 100 (Free, Paid, Grossing) by category with daily movers
+
+## Pricing
+
+| Plan | Price | Notes |
+|------|-------|-------|
+| Free | $0/mo | No credit card required |
+| Starter | $9.99/mo | Core tracking features |
+| Pro | $24.99/mo | Full feature access |
+| Elite | Higher tier | 500+ keywords tracked |
+
+## About
+
+Made by CristoMade — https://www.cristomade.it/
