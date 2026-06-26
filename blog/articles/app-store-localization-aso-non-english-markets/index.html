@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Store Localization for Indie Developers: Easy Wins in Non-English Markets — ASO Analytics Blog</title>
+  <meta name="description" content="**Published:** June 26, 2026 **Topic:** ASO Localization Strategy **Read time:** 5..." />
+  <meta name="author" content="CristoMade" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.cristomade.it/blog/articles/app-store-localization-aso-non-english-markets/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.cristomade.it/blog/articles/app-store-localization-aso-non-english-markets/" />
+  <meta property="og:title" content="App Store Localization for Indie Developers: Easy Wins in Non-English Markets" />
+  <meta property="og:description" content="**Published:** June 26, 2026 **Topic:** ASO Localization Strategy **Read time:** 5..." />
+  <meta property="og:image" content="https://www.cristomade.it/og-image.png" />
+  <meta property="og:site_name" content="ASO Analytics by CristoMade" />
+  <meta property="article:published_time" content="2026-06-26" />
+  <meta property="article:author" content="CristoMade" />
+  <meta property="article:tag" content="ASO" />
+  <meta property="article:tag" content="App Store Optimization" />
+  <meta property="article:tag" content="iOS development" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="App Store Localization for Indie Developers: Easy Wins in Non-English Markets" />
+  <meta name="twitter:description" content="**Published:** June 26, 2026 **Topic:** ASO Localization Strategy **Read time:** 5..." />
+  <meta name="twitter:image" content="https://www.cristomade.it/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "App Store Localization for Indie Developers: Easy Wins in Non-English Markets",
+    "description": "**Published:** June 26, 2026 **Topic:** ASO Localization Strategy **Read time:** 5...",
+    "url": "https://www.cristomade.it/blog/articles/app-store-localization-aso-non-english-markets/",
+    "datePublished": "2026-06-26",
+    "author": { "@type": "Organization", "name": "CristoMade", "url": "https://www.cristomade.it/" },
+    "publisher": { "@type": "Organization", "name": "CristoMade", "url": "https://www.cristomade.it/" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --accent-1:  #5eecc0;
+      --accent-2:  #ffd166;
+      --accent-3:  #7c6fff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+      --radius:    10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--ink); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 1000;
+    }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 0; transition: background 0.3s, backdrop-filter 0.3s; }
+    .nav.scrolled { background: rgba(14,15,17,.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 52px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted-2); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta { background: var(--white); color: var(--ink) !important; padding: 8px 20px; border-radius: 999px; font-size: 14px; font-weight: 600 !important; transition: opacity 0.2s !important; }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(14,15,17,.97); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 24px; font-family: var(--serif); color: var(--white); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--accent-1); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 24px; cursor: pointer; color: var(--muted-2); }
+
+    /* Article header */
+    .article-header { padding: 140px 24px 64px; max-width: 760px; margin: 0 auto; }
+    .article-breadcrumb { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: var(--accent-1); }
+    .article-breadcrumb span { color: var(--muted); opacity: 0.4; }
+    .article-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+    .article-category {
+      font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-3); background: rgba(124,111,255,0.1); border: 1px solid rgba(124,111,255,0.2); padding: 3px 10px; border-radius: 4px;
+    }
+    .article-date { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .article-readtime { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .article-readtime::before { content: '·'; margin-right: 14px; }
+    .article-header h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 54px); font-weight: 400; line-height: 1.15; margin-bottom: 24px; color: var(--white); }
+    .article-header .lede { font-size: 18px; color: var(--muted-2); line-height: 1.75; font-weight: 300; border-left: 3px solid var(--accent-1); padding-left: 20px; }
+
+    .article-divider { max-width: 760px; margin: 0 auto; padding: 0 24px; border-bottom: 1px solid var(--line); }
+
+    /* Body */
+    .article-body { max-width: 760px; margin: 0 auto; padding: 64px 24px; }
+    .article-body p { font-size: 16px; line-height: 1.85; color: var(--muted-2); font-weight: 300; margin-bottom: 24px; }
+    .article-body p strong { color: var(--white); font-weight: 600; }
+    .article-body h2 { font-family: var(--serif); font-size: clamp(22px, 3vw, 32px); font-weight: 400; color: var(--white); margin-top: 56px; margin-bottom: 18px; line-height: 1.2; }
+    .article-body h3 { font-size: 17px; font-weight: 600; color: var(--white); margin-top: 32px; margin-bottom: 14px; }
+    .article-body ul, .article-body ol { padding-left: 0; list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .article-body ul li { font-size: 15px; color: var(--muted-2); font-weight: 300; line-height: 1.7; padding-left: 20px; position: relative; }
+    .article-body ul li::before { content: '✦'; position: absolute; left: 0; color: var(--accent-1); font-size: 9px; top: 6px; }
+    .article-body ul li strong { color: var(--white); font-weight: 600; }
+    .article-body ol { counter-reset: list; }
+    .article-body ol li { font-size: 15px; color: var(--muted-2); font-weight: 300; line-height: 1.7; padding-left: 28px; position: relative; counter-increment: list; }
+    .article-body ol li::before { content: counter(list); position: absolute; left: 0; color: var(--accent-1); font-family: var(--mono); font-size: 12px; font-weight: 500; top: 3px; width: 18px; text-align: right; }
+    .article-body ol li strong { color: var(--white); font-weight: 600; }
+    .article-body hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+    .article-body a { color: var(--accent-1); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .article-body a:hover { opacity: 0.8; }
+    .article-body em { font-style: italic; }
+    .article-body code { font-family: var(--mono); font-size: 13px; background: rgba(255,255,255,0.08); padding: 2px 7px; border-radius: 4px; color: var(--accent-1); }
+
+    /* End / CTA */
+    .article-end { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+    .tag { font-family: var(--mono); font-size: 11px; color: var(--muted); background: rgba(255,255,255,0.06); border: 1px solid var(--line); padding: 4px 12px; border-radius: 999px; letter-spacing: 0.05em; }
+    .article-cta { background: var(--ink-2); border: 1px solid rgba(94,236,192,.2); border-radius: 14px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; overflow: hidden; }
+    .article-cta::before { content: ''; position: absolute; left: -40px; top: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(94,236,192,.1), transparent 65%); pointer-events: none; }
+    .article-cta-text h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .article-cta-text p { font-size: 14px; color: var(--muted-2); font-weight: 300; max-width: 380px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-1); color: var(--ink); font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px; transition: transform .2s, box-shadow .2s; box-shadow: 0 0 28px rgba(94,236,192,.28); white-space: nowrap; flex-shrink: 0; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(94,236,192,.42); }
+    .next-article { margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .next-label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .next-title { font-size: 15px; font-weight: 500; color: var(--muted-2); max-width: 480px; }
+    .next-arrow { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent-1); white-space: nowrap; flex-shrink: 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); transition: color .2s; margin-bottom: 40px; }
+    .back-link:hover { color: var(--accent-1); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 48px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a { font-size: 13px; color: var(--muted); transition: color .2s; }
+    .footer-right a:hover { color: var(--white); }
+
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--accent-1), var(--accent-3)); z-index: 200; transition: width .1s linear; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .article-cta { flex-direction: column; align-items: flex-start; padding: 28px; }
+      .next-article { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">✕</span>
+  <a href="/#features" onclick="toggleMobileNav()">Features</a>
+  <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="toggleMobileNav()">FAQ</a>
+  <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+  <a href="https://aso.cristomade.it/" class="btn-primary" style="font-size:16px;margin-top:8px;">Start Free</a>
+</nav>
+
+<header class="nav" id="mainNav" role="banner">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <img src="/ASO_WEBSITE_BANNER_2.svg" alt="ASO Analytics" width="130" height="40" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="https://aso.cristomade.it/auth/login">Sign in</a></li>
+      <li><a href="https://aso.cristomade.it/auth/register" class="nav-cta">Get started free</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+<article>
+  <header class="article-header">
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/">Blog</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">App Store Localization for Indie Developer…</span>
+    </nav>
+    <div class="article-meta">
+      <span class="article-category">Localization</span>
+      <span class="article-date">June 26, 2026</span>
+      <span class="article-readtime">6 min read</span>
+    </div>
+    <h1>App Store Localization for Indie Developers: Easy Wins in Non-English Markets</h1>
+    <p class="lede"><strong>Published:</strong> June 26, 2026 <strong>Topic:</strong> ASO Localization Strategy <strong>Read time:</strong> 5 minutes</p>
+  </header>
+
+  <div class="article-divider"></div>
+
+  <div class="article-body">
+    <hr />
+    <p>You're leaving downloads on the table. Not because your app is bad, but because 60% of App Store users don't speak English as their first language — and your listing only speaks one.</p>
+    <p>I see this constantly with indie apps. A beautifully built utility or game with zero localization. The developer assumes "everyone speaks English anyway." They don't. And Apple knows it.</p>
+    <p>Let's talk about how to fix this without hiring translators or rebuilding your app.</p>
+    <h2>Why Localization Hits Harder Than You Think</h2>
+    <p>Apple's search algorithm favors localized listings. When someone in Mexico searches for "editor de fotos," the App Store doesn't just translate your English keywords — it checks if you actually have a Spanish listing.</p>
+    <p>If you don't, you're invisible.</p>
+    <p>Here's what happens with a localized listing:</p>
+    <ul>
+      <li><strong>Keyword index multiplies.</strong> Each locale gets its own 100-character keyword field. Localize into 5 languages and you get 500 characters of keyword real estate.</li>
+      <li><strong>Conversion rate climbs.</strong> Users convert at 2-3x higher rates when the listing is in their native language. People trust what they can read.</li>
+      <li><strong>Competition drops.</strong> Most indie devs skip localization. The markets you enter are far less crowded than English.</li>
+    </ul>
+    <p>I analyzed a productivity app on ASO Analytics that localized into Spanish, French, and Portuguese. Their downloads jumped 47% in 30 days — with zero changes to the app itself. Just the listing.</p>
+    <h2>The 80/20 of ASO Localization</h2>
+    <p>You don't need to localize everything. Here's the order of impact:</p>
+    <h3>1. Keywords (Highest Impact, Lowest Effort)</h3>
+    <p>This is the cheat code. Apple gives each locale its own keyword field. You can stuff region-specific keywords without affecting your English keywords.</p>
+    <p>Example: A habit tracker app targeting Spain might use:</p>
+    <p>``<code> hábitos, rutina diaria, objetivos, seguimiento, productividad personal, organizador, recordatorios, planificador día, tasks </code>``</p>
+    <p>These are keywords that Spanish-speaking users actually type — not translations of your English keywords. "Recordatorios" (reminders) is a completely different volume play than "reminders" in English.</p>
+    <p><strong>Actionable step:</strong> Use ASO Analytics to look up what keywords your competitors rank for in target countries. Don't guess — steal the data.</p>
+    <h3>2. App Title & Subtitle</h3>
+    <p>This is the second-biggest lever. Apple weights the title heavily in search, and a localized title + subtitle can double your keyword coverage.</p>
+    <p>Don't just translate word-for-word. Adapt for search intent.</p>
+    <p>| English | Direct Translation | Search-Optimized | |---------|-------------------|------------------| | "Habit Tracker - Daily Goals" | "Rastreador de Hábitos - Metas Diarias" | "Habit Tracker - Seguimiento de Hábitos y Metas" | | "Photo Editor Pro" | "Editor de Fotos Pro" | "Editor de Fotos - Retoca y Mejora tus Imágenes" |</p>
+    <p>Notice the search-optimized versions keep the brand name but pack the subtitle with high-volume local keywords.</p>
+    <p><strong>Actionable step:</strong> For each target language, research the top 3 keywords by volume. Weave them naturally into subtitle.</p>
+    <h3>3. Description (First 3 Lines)</h3>
+    <p>The full description carries less SEO weight than it used to, but the first 2-3 lines appear above the fold before "Read More." That preview text matters for conversion — especially in localized markets where users scan fast.</p>
+    <p>Don't translate your entire description if you're bootstrapped. Start with the opening paragraph and feature bullets. That's where eyes land.</p>
+    <h3>4. Screenshots (Last, But Don't Skip)</h3>
+    <p>If you're serious about a market, localize your screenshot text. A French user seeing English screenshots on a French listing feels like a half-finished product.</p>
+    <p>Tools like Figma with component variants make this manageable. Build once, swap text layers per locale.</p>
+    <h2>Which Languages Should You Localize First?</h2>
+    <p>Don't do all 40 languages. Start with 3-5 that actually move the needle.</p>
+    <p>Here's a priority framework based on App Store data:</p>
+    <h3>Tier 1: Spanish, French, Portuguese</h3>
+    <ul>
+      <li><strong>Spanish:</strong> 500M+ speakers worldwide, massive App Store presence in Spain, Mexico, and across Latin America. Mexico alone is a top-10 App Store market.</li>
+      <li><strong>French:</strong> France, Canada, Belgium, Switzerland, and large portions of Africa. High ARPU (average revenue per user) in France.</li>
+      <li><strong>Portuguese:</strong> Brazil is the 5th largest App Store market by downloads. Portuguese localization opens all of it — and Portugal.</li>
+    </ul>
+    <h3>Tier 2: German, Japanese, Korean</h3>
+    <ul>
+      <li><strong>German:</strong> Germany, Austria, Switzerland. High spending per user.</li>
+      <li><strong>Japanese:</strong> Japan is the #3 App Store market by revenue. Users strongly prefer native-language apps. But localization quality matters more here — poor Japanese hurts more than no Japanese.</li>
+      <li><strong>Korean:</strong> South Korea is a top-5 gaming market with high conversion expectations.</li>
+    </ul>
+    <h3>Tier 3: Simplified Chinese, Arabic, Russian</h3>
+    <ul>
+      <li>Larger effort, larger reward. Only tackle these once Tier 1-2 are solid.</li>
+    </ul>
+    <p><strong>Actionable step:</strong> Pull your App Store Connect analytics. Sort countries by impressions. Pick the top 3 non-English countries and localize for those languages.</p>
+    <h2>Translation Quality: Good Enough vs. Perfect</h2>
+    <p>Here's the honest truth: "Good enough" localization beats no localization every time.</p>
+    <p>A few years ago, "good enough" meant embarrassing Google Translate output. That's changed. GPT-4 and Claude produce translations that are 90-95% native quality — plenty for an App Store listing.</p>
+    <p>The workflow I recommend:</p>
+    <ol>
+      <li><strong>Generate translations with an LLM.</strong> Feed it your English listing + context about your app's tone.</li>
+      <li><strong>Run it past a native speaker.</strong> Pay $20-50 on Upwork for a 15-minute review. They'll catch idioms the AI missed.</li>
+      <li><strong>Ship it.</strong> Don't obsess over perfection. You can iterate.</li>
+    </ol>
+    <p>I've seen developers wait months trying to find "the perfect translator" while losing hundreds of downloads daily. Ship the 90% version now. Polish later.</p>
+    <h2>One Thing Apple Doesn't Tell You</h2>
+    <p>Localized keywords stack.</p>
+    <p>If your app name contains "Photo" and someone searches "foto" in Spain, Apple doesn't match them unless your Spanish listing uses "foto" in its keywords. Same word, different language, zero cross-matching.</p>
+    <p>This means localizing literally multiplies your keyword surface area. An English-only listing might rank for 20 keywords meaningfully. A listing localized into 4 languages can rank for 80+.</p>
+    <h2>Common Localization Pitfalls</h2>
+    <p><strong>Don't just copy-paste English keywords into other locales.</strong> "Card game" doesn't translate to high-volume "juego de cartas" directly — the keyword volumes, competition, and search patterns are entirely different per market. Research each locale independently.</p>
+    <p><strong>Don't forget cultural context.</strong> A meditation app calling itself "Calm" works in English. In German-speaking markets, users search for "Meditation" or "Achtsamkeit" (mindfulness). Fit the local search behavior, not just the translation.</p>
+    <p><strong>Don't localize and forget.</strong> Keyword trends shift per market. What's hot in Brazil this month may cool next month. Track rankings per locale.</p>
+    <h2>The Bottom Line</h2>
+    <p>Localization is the highest-ROI ASO move most indie devs ignore. It's not glamorous. It won't get you a Product Hunt feature. But it will quietly add 30-50% more downloads to your app with a few hours of work.</p>
+    <p>Start with Spanish. Add French and Portuguese next. Use keyword data, not guesses. Ship the 90% version today.</p>
+    <p>Then track what happens — you might be surprised.</p>
+    <hr />
+    <p><strong>Track your keyword rankings across all localized markets with <a href="https://aso.cristomade.it">ASO Analytics</a>.</strong> Built for indie iOS developers who want to know exactly which keywords drive downloads — in every language. No fluff, just data.</p>
+
+  </div>
+
+  <div class="article-end">
+    <div class="article-tags" aria-label="Article tags">
+      <span class="tag">Localization</span>
+      <span class="tag">App Store Optimization</span>
+      <span class="tag">iOS Dev</span>
+      <span class="tag">Keyword Strategy</span>
+      <span class="tag">Indie Developer</span>
+      <span class="tag">App Discovery</span>
+    </div>
+
+    <div class="article-cta">
+      <div class="article-cta-text">
+        <h3>Track your keyword rankings automatically</h3>
+        <p>ASO Analytics monitors every keyword you care about — daily — so you always know what's moving. Free plan available, no credit card required.</p>
+      </div>
+      <a href="https://aso.cristomade.it/auth/register" class="btn-primary">
+        Start for free
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="next-article">
+      <div>
+        <p class="next-label">Up next</p>
+        <p class="next-title">More ASO guides coming soon</p>
+      </div>
+      <span class="next-arrow" aria-label="Coming soon">
+        Coming soon
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7H2.5M6.5 11L2.5 7L6.5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to all articles
+    </a>
+  </div>
+</article>
+</main>
+
+<footer role="contentinfo">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+        <p style="margin-top:4px;">Built with ♥ for independent iOS developers.</p>
+      </div>
+      <nav class="footer-right" aria-label="Footer navigation">
+        <a href="https://aso.cristomade.it/">App</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://aso.cristomade.it/auth/register">Sign up</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  function toggleMobileNav() {
+    const mn = document.getElementById('mobileNav');
+    mn.classList.toggle('open');
+    document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+  }
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+</script>
+
+</body>
+</html>
