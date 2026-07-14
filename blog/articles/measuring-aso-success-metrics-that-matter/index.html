@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASO Metrics That Actually Matter: Stop Tracking Vanity Numbers — ASO Analytics Blog</title>
+  <meta name="description" content="There's a trap most indie devs fall into with..." />
+  <meta name="author" content="CristoMade" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.cristomade.it/blog/articles/measuring-aso-success-metrics-that-matter/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.cristomade.it/blog/articles/measuring-aso-success-metrics-that-matter/" />
+  <meta property="og:title" content="ASO Metrics That Actually Matter: Stop Tracking Vanity Numbers" />
+  <meta property="og:description" content="There's a trap most indie devs fall into with..." />
+  <meta property="og:image" content="https://www.cristomade.it/og-image.png" />
+  <meta property="og:site_name" content="ASO Analytics by CristoMade" />
+  <meta property="article:published_time" content="2026-07-13" />
+  <meta property="article:author" content="CristoMade" />
+  <meta property="article:tag" content="ASO" />
+  <meta property="article:tag" content="App Store Optimization" />
+  <meta property="article:tag" content="iOS development" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ASO Metrics That Actually Matter: Stop Tracking Vanity Numbers" />
+  <meta name="twitter:description" content="There's a trap most indie devs fall into with..." />
+  <meta name="twitter:image" content="https://www.cristomade.it/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ASO Metrics That Actually Matter: Stop Tracking Vanity Numbers",
+    "description": "There's a trap most indie devs fall into with...",
+    "url": "https://www.cristomade.it/blog/articles/measuring-aso-success-metrics-that-matter/",
+    "datePublished": "2026-07-13",
+    "author": { "@type": "Organization", "name": "CristoMade", "url": "https://www.cristomade.it/" },
+    "publisher": { "@type": "Organization", "name": "CristoMade", "url": "https://www.cristomade.it/" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink:       #0e0f11;
+      --ink-2:     #1c1d21;
+      --ink-3:     #2d2e35;
+      --muted:     #6b7280;
+      --muted-2:   #9ca3af;
+      --line:      rgba(255,255,255,0.07);
+      --white:     #ffffff;
+      --accent-1:  #5eecc0;
+      --accent-2:  #ffd166;
+      --accent-3:  #7c6fff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'DM Mono', 'Fira Code', monospace;
+      --radius:    10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--ink); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 1000;
+    }
+
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 0; transition: background 0.3s, backdrop-filter 0.3s; }
+    .nav.scrolled { background: rgba(14,15,17,.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 52px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted-2); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta { background: var(--white); color: var(--ink) !important; padding: 8px 20px; border-radius: 999px; font-size: 14px; font-weight: 600 !important; transition: opacity 0.2s !important; }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-nav { display: none; position: fixed; inset: 0; background: rgba(14,15,17,.97); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 24px; font-family: var(--serif); color: var(--white); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--accent-1); }
+    .mobile-nav-close { position: absolute; top: 24px; right: 24px; font-size: 24px; cursor: pointer; color: var(--muted-2); }
+
+    /* Article header */
+    .article-header { padding: 140px 24px 64px; max-width: 760px; margin: 0 auto; }
+    .article-breadcrumb { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+    .article-breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .article-breadcrumb a:hover { color: var(--accent-1); }
+    .article-breadcrumb span { color: var(--muted); opacity: 0.4; }
+    .article-meta { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; flex-wrap: wrap; }
+    .article-category {
+      font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-3); background: rgba(124,111,255,0.1); border: 1px solid rgba(124,111,255,0.2); padding: 3px 10px; border-radius: 4px;
+    }
+    .article-date { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .article-readtime { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .article-readtime::before { content: '·'; margin-right: 14px; }
+    .article-header h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 54px); font-weight: 400; line-height: 1.15; margin-bottom: 24px; color: var(--white); }
+    .article-header .lede { font-size: 18px; color: var(--muted-2); line-height: 1.75; font-weight: 300; border-left: 3px solid var(--accent-1); padding-left: 20px; }
+
+    .article-divider { max-width: 760px; margin: 0 auto; padding: 0 24px; border-bottom: 1px solid var(--line); }
+
+    /* Body */
+    .article-body { max-width: 760px; margin: 0 auto; padding: 64px 24px; }
+    .article-body p { font-size: 16px; line-height: 1.85; color: var(--muted-2); font-weight: 300; margin-bottom: 24px; }
+    .article-body p strong { color: var(--white); font-weight: 600; }
+    .article-body h2 { font-family: var(--serif); font-size: clamp(22px, 3vw, 32px); font-weight: 400; color: var(--white); margin-top: 56px; margin-bottom: 18px; line-height: 1.2; }
+    .article-body h3 { font-size: 17px; font-weight: 600; color: var(--white); margin-top: 32px; margin-bottom: 14px; }
+    .article-body ul, .article-body ol { padding-left: 0; list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .article-body ul li { font-size: 15px; color: var(--muted-2); font-weight: 300; line-height: 1.7; padding-left: 20px; position: relative; }
+    .article-body ul li::before { content: '✦'; position: absolute; left: 0; color: var(--accent-1); font-size: 9px; top: 6px; }
+    .article-body ul li strong { color: var(--white); font-weight: 600; }
+    .article-body ol { counter-reset: list; }
+    .article-body ol li { font-size: 15px; color: var(--muted-2); font-weight: 300; line-height: 1.7; padding-left: 28px; position: relative; counter-increment: list; }
+    .article-body ol li::before { content: counter(list); position: absolute; left: 0; color: var(--accent-1); font-family: var(--mono); font-size: 12px; font-weight: 500; top: 3px; width: 18px; text-align: right; }
+    .article-body ol li strong { color: var(--white); font-weight: 600; }
+    .article-body hr { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+    .article-body a { color: var(--accent-1); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .article-body a:hover { opacity: 0.8; }
+    .article-body em { font-style: italic; }
+    .article-body code { font-family: var(--mono); font-size: 13px; background: rgba(255,255,255,0.08); padding: 2px 7px; border-radius: 4px; color: var(--accent-1); }
+
+    /* End / CTA */
+    .article-end { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+    .tag { font-family: var(--mono); font-size: 11px; color: var(--muted); background: rgba(255,255,255,0.06); border: 1px solid var(--line); padding: 4px 12px; border-radius: 999px; letter-spacing: 0.05em; }
+    .article-cta { background: var(--ink-2); border: 1px solid rgba(94,236,192,.2); border-radius: 14px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; position: relative; overflow: hidden; }
+    .article-cta::before { content: ''; position: absolute; left: -40px; top: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(94,236,192,.1), transparent 65%); pointer-events: none; }
+    .article-cta-text h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .article-cta-text p { font-size: 14px; color: var(--muted-2); font-weight: 300; max-width: 380px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-1); color: var(--ink); font-weight: 700; font-size: 15px; padding: 13px 24px; border-radius: 999px; transition: transform .2s, box-shadow .2s; box-shadow: 0 0 28px rgba(94,236,192,.28); white-space: nowrap; flex-shrink: 0; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(94,236,192,.42); }
+    .next-article { margin-top: 40px; padding: 24px 0; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .next-label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .next-title { font-size: 15px; font-weight: 500; color: var(--muted-2); max-width: 480px; }
+    .next-arrow { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent-1); white-space: nowrap; flex-shrink: 0; }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); transition: color .2s; margin-bottom: 40px; }
+    .back-link:hover { color: var(--accent-1); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 48px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-left { font-size: 13px; color: var(--muted); }
+    .footer-left a { color: var(--muted-2); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-right { display: flex; gap: 24px; }
+    .footer-right a { font-size: 13px; color: var(--muted); transition: color .2s; }
+    .footer-right a:hover { color: var(--white); }
+
+    .progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--accent-1), var(--accent-3)); z-index: 200; transition: width .1s linear; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .article-cta { flex-direction: column; align-items: flex-start; padding: 28px; }
+      .next-article { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <span class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">✕</span>
+  <a href="/#features" onclick="toggleMobileNav()">Features</a>
+  <a href="/#pricing" onclick="toggleMobileNav()">Pricing</a>
+  <a href="/#faq" onclick="toggleMobileNav()">FAQ</a>
+  <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+  <a href="https://aso.cristomade.it/" class="btn-primary" style="font-size:16px;margin-top:8px;">Start Free</a>
+</nav>
+
+<header class="nav" id="mainNav" role="banner">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="ASO Analytics home">
+      <img src="/ASO_WEBSITE_BANNER_2.svg" alt="ASO Analytics" width="130" height="40" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="https://aso.cristomade.it/auth/login">Sign in</a></li>
+      <li><a href="https://aso.cristomade.it/auth/register" class="nav-cta">Get started free</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+<article>
+  <header class="article-header">
+    <nav class="article-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/">Blog</a>
+      <span aria-hidden="true">›</span>
+      <span aria-current="page">ASO Metrics That Actually Matter: Stop Tra…</span>
+    </nav>
+    <div class="article-meta">
+      <span class="article-category">Analytics</span>
+      <span class="article-date">July 13, 2026</span>
+      <span class="article-readtime">7 min read</span>
+    </div>
+    <h1>ASO Metrics That Actually Matter: Stop Tracking Vanity Numbers</h1>
+    <p class="lede">There's a trap most indie devs fall into with ASO.</p>
+  </header>
+
+  <div class="article-divider"></div>
+
+  <div class="article-body">
+    <p>You ship an update. You tweak your keywords. Then you check App Store Connect, see the impressions number went up, and think "nice, ASO is working."</p>
+    <p>Impressions are not success. Impressions are a maybe — someone saw your icon, possibly while scrolling past at the speed of light. If you're optimizing for impressions, you're optimizing for something that makes you feel good without making you money.</p>
+    <p>Here are the metrics that <em>actually</em> tell you whether your ASO strategy is working — and which ones are just noise.</p>
+    <hr />
+    <h2>The Metric That Actually Pays Your Rent: Conversion Rate</h2>
+    <p>If you track exactly one ASO metric, make it this one.</p>
+    <p>Conversion rate = <strong>downloads ÷ impressions</strong>. Simple math, brutally honest feedback.</p>
+    <p>A low conversion rate tells you the algorithm is showing your app, but people aren't buying what they see. That's either a metadata problem (your title/subtitle don't match what users want) or a visual problem (your screenshots aren't selling the experience).</p>
+    <p>I've seen apps with 15,000 impressions/month and 300 downloads — that's 2% conversion. Swap the first two screenshots, rewrite the subtitle, and suddenly it's 6%. Same traffic, triple the installs. No new keyword work. No rank changes. Just fixing the thing that was already getting eyeballs.</p>
+    <p><strong>What to watch:</strong> If you're above 8% conversion on search impressions, you're in decent shape. Below 5%, something needs fixing. The average across the store hovers around 7-8% for search, but varies wildly by category.</p>
+    <p><strong>The nuance:</strong> Split your conversion rate by source. Search conversion is mostly about metadata relevance. Browse/explore conversion is mostly about your icon and first screenshot. Referral conversion is about your product page as a landing page. Treat them as separate problems.</p>
+    <hr />
+    <h2>Keyword Rankings: Stop Obsessing Over #1</h2>
+    <p>Everyone wants to rank #1. I get it. But #1 for "pomodoro timer cute" moves fewer needles than #15 for "focus timer."</p>
+    <p>Rank tracking matters, but <em>which</em> ranks matter more than <em>how high</em> they are.</p>
+    <p>Here's the framework I use:</p>
+    <p><strong>Tier 1 keywords (top 10):</strong> These are your money keywords. High volume, high intent, directly describe your app. Track them weekly. If you drop here, investigate immediately.</p>
+    <p><strong>Tier 2 keywords (11-30):</strong> Your growth opportunities. Solid volume, realistic path to top 10 with good metadata and some install velocity. Watch these bi-weekly. A Tier 2 keyword moving into Tier 1 is the best signal that your ASO is working.</p>
+    <p><strong>Tier 3 keywords (31-50):</strong> Discovery keywords. Lower volume, niche terms. These are your long-tail plays. If one pops into the top 20 without you touching it, Apple's algorithm is telling you something — your app is getting associated with that term organically. Pay attention.</p>
+    <p><strong>Tier 4 (50+):</strong> Honestly? Stop looking at these. Rankings beyond 50 are barely driving impressions, let alone downloads. Track them once when you add keywords, check again in a month. Spending mental energy on whether you're #87 or #94 for something is not worth the calories.</p>
+    <p>The ranking metric that actually predicts growth isn't your highest position — it's your <em>velocity</em> across Tier 2 keywords. How many keywords moved up 5+ positions this month? That's the number that compounds.</p>
+    <hr />
+    <h2>The Silent Killer: Impressions Without Downloads</h2>
+    <p>This deserves its own section because it's the most common ASO blind spot.</p>
+    <p>Go to App Store Connect → Analytics → Acquisition → Impressions. Filter by source: "App Store Search." Now look at the keywords generating impressions.</p>
+    <p>Find the ones with high impressions and zero (or near-zero) downloads.</p>
+    <p>These are your leeches. The algorithm is matching your app for searches where you're not relevant. Maybe you ranked for "workout planner" because your productivity app's subtitle mentions "plan," and now fitness seekers see your app and scroll past instantly. Every impression without a download <em>hurts</em> your conversion rate, which signals to Apple that your app isn't relevant, which drags down your other rankings.</p>
+    <p><strong>Fix it:</strong> Audit your keyword list quarterly. If a keyword is generating impressions but no downloads over a 30-day window, remove it. You're burning algorithm goodwill for nothing.</p>
+    <hr />
+    <h2>Retention Metrics: ASO Isn't Just About Getting In</h2>
+    <p>This is the metric nobody connects to ASO, but it absolutely matters.</p>
+    <p>Apple tracks what happens <em>after</em> the download. Install velocity, uninstall rate, engagement. Apps that get downloaded and immediately deleted signal low quality. Apps that stick around signal relevance.</p>
+    <p>If your ASO is too aggressive — promising features you don't have, using screenshots that oversell the experience — you'll get installs, sure. Then a wave of uninstalls. Then your rankings tank because the algorithm noticed.</p>
+    <p>The ASO-to-retention feedback loop is real: <strong>honest metadata → relevant users → better retention → stronger rankings → more impressions from the algorithm</strong>.</p>
+    <p>I've tracked this on ASO Analytics. Developers who optimize for <em>precision</em> (matching exactly who their app is for, even if the audience sounds smaller) consistently outperform those optimizing for <em>reach</em> (trying to cast the widest net). The algorithm rewards relevance. Retention data proves it.</p>
+    <hr />
+    <h2>The Metric Most Devs Ignore: Competitor Overlap</h2>
+    <p>When you track keyword rankings, don't just look at your own numbers. Look at who's ranking above you.</p>
+    <p>If the same 3-4 competitors consistently outrank you across your target keywords, you have a competitive ASO problem — not a keyword problem. They're either getting more installs (velocity wins), have better metadata relevance, or have stronger ratings/reviews.</p>
+    <p>Pick your top 10 target keywords. For each one, note:</p>
+    <ol>
+      <li>Who ranks #1-#3</li>
+      <li>Whether those apps have higher ratings than you</li>
+      <li>Whether their title/subtitle mentions the keyword</li>
+    </ol>
+    <p>If competitors ranking above you all have 4.5+ stars and you're at 4.0 — your rating is the bottleneck, not your keywords. If they all include the keyword in their subtitle and you don't — you found your fix.</p>
+    <p>This is the difference between <em>tracking</em> metrics and <em>understanding</em> them. Raw numbers without competitive context are just trivia.</p>
+    <hr />
+    <h2>What to Actually Do Every Week (The 15-Minute ASO Check)</h2>
+    <p>Here's a practical routine that takes 15 minutes and covers the metrics that matter:</p>
+    <ol>
+      <li><strong>Check conversion rate</strong> (App Store Connect → Acquisition). Any movement? If it dropped, check which source is dragging it down.</li>
+    </ol>
+    <ol>
+      <li><strong>Scan Tier 1 keyword rankings.</strong> Any drops of 5+ positions? Investigate. Any new entries to the top 10? Celebrate briefly, then figure out why.</li>
+    </ol>
+    <ol>
+      <li><strong>Spot-check Tier 2 velocity.</strong> Any keywords that moved 10+ positions? Good — the algorithm is responding to something. Double down on those themes.</li>
+    </ol>
+    <ol>
+      <li><strong>Audit your leeches.</strong> Sort impressions by source, find high-impression zero-download keywords. Kill them.</li>
+    </ol>
+    <ol>
+      <li><strong>Glance at a competitor.</strong> Pick one competitor, check their rank on 3 shared keywords. Are they gaining on you?</li>
+    </ol>
+    <p>That's it. Not hours in a spreadsheet. Not obsessing over every 1-position change. Just the metrics that move the needle, checked consistently.</p>
+    <hr />
+    <h2>The One Spreadsheet You Actually Need</h2>
+    <p>I've seen devs build elaborate ASO dashboards with 40+ metrics. Most of them are noise.</p>
+    <p>The only columns that matter:</p>
+    <p>| Keyword | Your Rank | Top Competitor Rank | Volume | Conversion Rate | Trend |</p>
+    <p>Fill it out once a week. The "Trend" column should just be an arrow: ↑ ↓ →</p>
+    <p>If you watch this for a month, patterns emerge that no amount of spot-checking will reveal. You'll see which keyword themes consistently climb, which competitors are gaining ground, and which conversion problems are chronic vs. one-off.</p>
+    <hr />
+    <h2>Bottom Line</h2>
+    <p>ASO isn't magic. It's a feedback loop: <strong>show up → convert → retain → rank higher → show up more.</strong></p>
+    <p>The metrics that measure that loop are the ones worth tracking. Everything else is just numbers that make you feel productive.</p>
+    <p>Stop obsessing over #1 ranks. Start obsessing over whether the people who see your app actually want it.</p>
+    <hr />
+    <p><em>Track your keyword rankings, conversion rates, and competitor overlap in one place. <strong><a href="https://aso.cristomade.it">ASO Analytics</a></strong> gives indie iOS developers the metrics that matter — without the noise. Built by a dev, for devs.</em></p>
+
+  </div>
+
+  <div class="article-end">
+    <div class="article-tags" aria-label="Article tags">
+      <span class="tag">Analytics</span>
+      <span class="tag">App Store Optimization</span>
+      <span class="tag">iOS Dev</span>
+      <span class="tag">Keyword Strategy</span>
+      <span class="tag">Indie Developer</span>
+      <span class="tag">App Discovery</span>
+    </div>
+
+    <div class="article-cta">
+      <div class="article-cta-text">
+        <h3>Track your keyword rankings automatically</h3>
+        <p>ASO Analytics monitors every keyword you care about — daily — so you always know what's moving. Free plan available, no credit card required.</p>
+      </div>
+      <a href="https://aso.cristomade.it/auth/register" class="btn-primary">
+        Start for free
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="next-article">
+      <div>
+        <p class="next-label">Up next</p>
+        <p class="next-title">More ASO guides coming soon</p>
+      </div>
+      <span class="next-arrow" aria-label="Coming soon">
+        Coming soon
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 7H11.5M7.5 3L11.5 7L7.5 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+
+    <a href="/blog/" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M11.5 7H2.5M6.5 11L2.5 7L6.5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to all articles
+    </a>
+  </div>
+</article>
+</main>
+
+<footer role="contentinfo">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p>© 2026 <a href="https://www.cristomade.it/">CristoMade</a>. All rights reserved.</p>
+        <p style="margin-top:4px;">Built with ♥ for independent iOS developers.</p>
+      </div>
+      <nav class="footer-right" aria-label="Footer navigation">
+        <a href="https://aso.cristomade.it/">App</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://aso.cristomade.it/auth/register">Sign up</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  function toggleMobileNav() {
+    const mn = document.getElementById('mobileNav');
+    mn.classList.toggle('open');
+    document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+  }
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+</script>
+
+</body>
+</html>
